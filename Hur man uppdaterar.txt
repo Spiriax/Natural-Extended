@@ -1,0 +1,15 @@
+Skapa cmd i directory (välj location sen skriv cmd)
+
+"git status" för att kolla om det behöver uppdateras
+
+"git add ." för att lägga upp
+
+"git commit -m "Added group panel UI"" + kommentar
+
+"git push" som sista kommando
+
+"git log --oneline" för historik
+
+"git diff" visar skillnaderna innan man commitar
+
+git remote add https://github.com/Spiriax/Natural-Extended
