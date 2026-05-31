@@ -10,6 +10,12 @@ jQuery(() => {
     console.log("Current character ID:", context.characterId);
     console.log("Current group ID:", context.groupId);
     console.log("Current chat:", context.chat);
+    console.log("Tags:", context.tags);
+    console.log("TagMap:", context.tagMap);
+    console.log("getCharacters:", context.getCharacters);
+    context.getCharacters().then(result => {
+        console.log("getCharacters() result:", result);
+    });
 
     const panels = document.querySelectorAll('.inline-drawer-content');
 
