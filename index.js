@@ -1,14 +1,4 @@
-
-context.chat; // Chat log - MUTABLE
-context.characters; // Character list
-context.characterId; // Index of the current character
-context.groups; // Group list
-context.groupId; // ID of the current group
-// And many more...
-
 jQuery(() => {
-    const context = SillyTavern.getContext();
-    
     console.log("Natural Extended loaded");
 
     const panel = document.querySelector(

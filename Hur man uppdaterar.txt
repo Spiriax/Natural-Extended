@@ -12,4 +12,10 @@ Skapa cmd i directory (välj location sen skriv cmd)
 
 "git diff" visar skillnaderna innan man commitar
 
-git remote add https://github.com/Spiriax/Natural-Extended
+------
+
+Vanligtvis:
+
+git add .
+git commit -m "kommentar"
+git push
