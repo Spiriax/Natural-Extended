@@ -17,10 +17,10 @@ jQuery(() => {
     div.innerHTML = `
     <div id="natural-extended-panel" style="margin-top:10px;">
 
-        <div class="inline-drawer-header">
+        <div class="inline-drawer-header" style="margin-bottom:10px;">
             Natural Extended Settings
         </div>
-
+        
         <label style="display:flex; align-items:center; gap:8px;">
             <input type="checkbox" id="ne-enabled">
             Enable for this group
@@ -34,7 +34,7 @@ jQuery(() => {
 
         <div style="margin-top:10px;">
             <label>
-                Words that make everyone respond
+                Words that make every character respond
             </label>
             <br>
             <input
@@ -56,7 +56,8 @@ jQuery(() => {
                 id="ne-max-mentions"
                 min="0"
                 value="1"
-                style="width:80px;"
+                class="text_pole"
+                style="width:60px;"
             >
         </div>
 
