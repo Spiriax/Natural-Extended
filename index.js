@@ -27,6 +27,7 @@ jQuery(() => {
     </div>
     `;
     
+    console.log(panel);
     panel.appendChild(div);
 
     console.log("Natural Extended injected");
