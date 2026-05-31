@@ -3,6 +3,12 @@ jQuery(() => {
     
     const context = SillyTavern.getContext();
     
+    console.log("Event types:", context.eventTypes);
+
+    if (context.eventSource) {
+        console.log("Event source found");
+    }
+    
     console.log("Context:", context);
     console.log("Group ID:", context.groupId);
     console.log("Groups:", context.groups);
@@ -83,6 +89,14 @@ jQuery(() => {
     `;
 
     panel.appendChild(div);
+    
+    if (context.eventSource) {
+    console.log("Subscribing to events");
+
+    context.eventSource.onAny?.((eventName, ...args) => {
+        console.log("[Natural Extended Event]", eventName, args);
+    });
+}
 
     console.log("Natural Extended injected");
 });
