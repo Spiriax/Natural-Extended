@@ -13,20 +13,20 @@ jQuery(() => {
     const div = document.createElement('div');
 
     div.innerHTML = `
-        <div id="natural-extended-test"
-             style="
-                margin:10px;
-                padding:10px;
-                border:1px solid #666;
-             ">
-            <h3>Natural Extended</h3>
-            <label>
-                <input type="checkbox">
-                Enable for this group
-            </label>
-        </div>
+    <div
+        id="natural-extended-test"
+        style="
+            background:red;
+            color:white;
+            font-size:30px;
+            padding:20px;
+            margin:20px;
+            border:5px solid yellow;
+        ">
+        NATURAL EXTENDED TEST
+    </div>
     `;
-
+    
     panel.appendChild(div);
 
     console.log("Natural Extended injected");
