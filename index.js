@@ -17,6 +17,9 @@ jQuery(() => {
     console.log("Current group ID:", context.groupId);
     console.log("Current chat:", context.chat);
     console.log("Tags:", context.tags);
+    console.log("Name1:", context.name1);
+    console.log("Current chat length:", context.chat.length);
+    console.log("Name2:", context.name2);
     console.log("TagMap:", context.tagMap);
     console.log("getCharacters:", context.getCharacters);
     context.getCharacters().then(result => {
