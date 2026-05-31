@@ -21,7 +21,7 @@ jQuery(() => {
             Natural Extended Settings
         </div>
 
-        <label>
+        <label style="display:flex; align-items:center; gap:8px;">
             <input type="checkbox" id="ne-enabled">
             Enable for this group
         </label>
@@ -40,8 +40,8 @@ jQuery(() => {
             <input
                 type="text"
                 id="ne-everyone"
-                style="width:100%;"
-            >
+                style="text_pole flex1"
+            />
         </div>
 
         <hr>
