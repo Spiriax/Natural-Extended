@@ -40,7 +40,7 @@ jQuery(() => {
             <input
                 type="text"
                 id="ne-everyone"
-                style="text_pole flex1"
+                class="text_pole flex1"
             />
         </div>
 
