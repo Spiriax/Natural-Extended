@@ -1,5 +1,12 @@
 jQuery(() => {
     console.log("Natural Extended loaded");
+    
+    const context = SillyTavern.getContext();
+    
+    console.log("Context:", context);
+    console.log("Group ID:", context.groupId);
+    console.log("Groups:", context.groups);
+    console.log("Characters:", context.characters);
 
     const panels = document.querySelectorAll('.inline-drawer-content');
 
@@ -20,6 +27,8 @@ jQuery(() => {
         <div class="inline-drawer-header" style="margin-bottom:10px;">
             Natural Extended Settings
         </div>
+        
+        <div style="height:10px;"></div>
         
         <label style="display:flex; align-items:center; gap:8px;">
             <input type="checkbox" id="ne-enabled">
