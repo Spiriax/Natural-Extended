@@ -1,0 +1,25 @@
+{
+    "display_name": "Natural Extended",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [],
+    "dependencies": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Spiriax",
+    "version": "0.0.1",
+    "homePage": "https://github.com/Spiriax/Natural-Extended",
+    "auto_update": true,
+    "minimum_client_version": "1.0.0",
+    "i18n": {
+        "de-de": "i18n/de-de.json"
+    },
+    "hooks": {
+        "install": "onInstall",
+        "update": "onUpdate",
+        "delete": "onDelete",
+        "enable": "onEnable",
+        "disable": "onDisable",
+        "activate": "onActivate"
+    }
+}
