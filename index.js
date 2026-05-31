@@ -1,34 +1,32 @@
 jQuery(() => {
     console.log("Natural Extended loaded");
 
-    const panel = document.querySelector(
-        '.inline-drawer.wide100p.flexFlowColumn'
-    );
+    const panels = document.querySelectorAll('.inline-drawer-content');
 
-    if (!panel) {
-        console.log("Panel not found");
-        return;
-    }
+    console.log("Found panels:", panels.length);
 
-    const div = document.createElement('div');
+    panels.forEach((panel, index) => {
+        console.log(`Panel ${index}:`, panel);
 
-    div.innerHTML = `
-    <div
-        id="natural-extended-test"
-        style="
-            background:red;
-            color:white;
-            font-size:30px;
-            padding:20px;
-            margin:20px;
-            border:5px solid yellow;
-        ">
-        NATURAL EXTENDED TEST
-    </div>
-    `;
-    
-    console.log(panel);
-    panel.appendChild(div);
+        const div = document.createElement('div');
+
+        div.innerHTML = `
+            <div
+                id="natural-extended-test-${index}"
+                style="
+                    background:red;
+                    color:white;
+                    font-size:30px;
+                    padding:20px;
+                    margin:20px;
+                    border:5px solid yellow;
+                ">
+                NATURAL EXTENDED TEST (${index})
+            </div>
+        `;
+
+        panel.appendChild(div);
+    });
 
     console.log("Natural Extended injected");
 });
