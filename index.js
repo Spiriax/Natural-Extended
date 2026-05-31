@@ -7,6 +7,9 @@ jQuery(() => {
     console.log("Group ID:", context.groupId);
     console.log("Groups:", context.groups);
     console.log("Characters:", context.characters);
+    console.log("Current character ID:", context.characterId);
+    console.log("Current group ID:", context.groupId);
+    console.log("Current chat:", context.chat);
 
     const panels = document.querySelectorAll('.inline-drawer-content');
 
