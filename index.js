@@ -10,9 +10,17 @@ jQuery(() => {
     
             const freshContext = SillyTavern.getContext();
     
+            console.log("Fresh context:", freshContext);
             console.log("Group ID:", freshContext.groupId);
             console.log("Characters:", freshContext.characters);
             console.log("Chat length:", freshContext.chat.length);
+            
+            console.log(
+                "Current group:",
+                freshContext.groups?.find(
+                    g => String(g.id) === String(freshContext.groupId)
+                )
+            );
     
             const memberCards = document.querySelectorAll(
                 '#groupCurrentMemberList .group_member'
