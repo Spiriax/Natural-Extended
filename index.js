@@ -31,6 +31,12 @@ jQuery(() => {
     console.log("Found panels:", panels.length);
 
     const panel = panels[16];
+    
+    const memberCards = document.querySelectorAll(
+        '#groupCurrentMemberList .group_member'
+    );
+
+    console.log("Member cards:", memberCards);
 
     if (!panel) {
         console.log("Natural Extended panel not found");
