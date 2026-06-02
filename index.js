@@ -3,6 +3,13 @@ jQuery(() => {
     
     const context = SillyTavern.getContext();
     
+    context.eventSource.on(
+        context.eventTypes.CHAT_LOADED,
+        () => {
+            console.log("🔥 CHAT_LOADED");
+        }
+    );    
+    
     console.log(context.eventTypes);
     
     Object.entries(context.eventTypes).forEach(([key, value]) => {
