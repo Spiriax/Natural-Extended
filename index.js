@@ -3,7 +3,11 @@ jQuery(() => {
     
     const context = SillyTavern.getContext();
     
-    console.log("Event types:", context.eventTypes);
+    console.log(context.eventTypes);
+    
+    Object.entries(context.eventTypes).forEach(([key, value]) => {
+        console.log(key, value);
+    });
 
     if (context.eventSource) {
         console.log("Event source found");
