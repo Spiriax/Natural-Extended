@@ -4,9 +4,21 @@ jQuery(() => {
     const context = SillyTavern.getContext();
     
     context.eventSource.on(
-        context.eventTypes.CHAT_LOADED,
+        context.eventTypes.CHAT_CHANGED,
         () => {
-            console.log("🔥 CHAT_LOADED");
+            console.log("🔥 CHAT_CHANGED");
+    
+            const freshContext = SillyTavern.getContext();
+    
+            console.log("Group ID:", freshContext.groupId);
+            console.log("Characters:", freshContext.characters);
+            console.log("Chat length:", freshContext.chat.length);
+    
+            const memberCards = document.querySelectorAll(
+                '#groupCurrentMemberList .group_member'
+            );
+    
+            console.log("Member cards:", memberCards);
         }
     );    
     
