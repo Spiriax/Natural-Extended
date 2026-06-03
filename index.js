@@ -84,6 +84,77 @@ jQuery(() => {
                 groupCharacters
             );
             
+            groupCharacters.forEach(character => {
+
+                if (
+                    !naturalExtendedSettings[
+                        freshContext.groupId
+                    ].characters[
+                        character.name
+                    ]
+                ) {
+            
+                    naturalExtendedSettings[
+                        freshContext.groupId
+                    ].characters[
+                        character.name
+                    ] = {
+            
+                        respond: "",
+                        ignore: ""
+            
+                    };
+            
+                }
+            
+                const respondInput =
+                    document.getElementById(
+                        `respond-${character.name}`
+                    );
+            
+                const ignoreInput =
+                    document.getElementById(
+                        `ignore-${character.name}`
+                    );
+            
+                respondInput.value =
+                    naturalExtendedSettings[
+                        freshContext.groupId
+                    ].characters[
+                        character.name
+                    ].respond;
+            
+                ignoreInput.value =
+                    naturalExtendedSettings[
+                        freshContext.groupId
+                    ].characters[
+                        character.name
+                    ].ignore;
+            
+                respondInput.oninput = () => {
+            
+                    naturalExtendedSettings[
+                        freshContext.groupId
+                    ].characters[
+                        character.name
+                    ].respond =
+                        respondInput.value;
+            
+                };
+            
+                ignoreInput.oninput = () => {
+            
+                    naturalExtendedSettings[
+                        freshContext.groupId
+                    ].characters[
+                        character.name
+                    ].ignore =
+                        ignoreInput.value;
+            
+                };
+            
+            });
+            
             const enableCheckbox =
                 document.getElementById(
                     "ne-enabled"
@@ -281,7 +352,7 @@ jQuery(() => {
                 type="number"
                 id="ne-max-mentions"
                 min="0"
-                value="1"
+                value="0"
                 class="text_pole"
                 style="width:60px;"
             >
@@ -324,6 +395,7 @@ jQuery(() => {
                         <div style="flex:1;">
                             <label>Respond</label>
                             <input
+                                id="respond-${character.name}"
                                 class="text_pole flex1"
                                 type="text"
                             >
@@ -332,6 +404,7 @@ jQuery(() => {
                         <div style="flex:1;">
                             <label>Ignore</label>
                             <input
+                                id="ignore-${character.name}"
                                 class="text_pole flex1"
                                 type="text"
                             >
