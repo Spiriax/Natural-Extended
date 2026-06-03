@@ -44,6 +44,10 @@ jQuery(() => {
                         String(g.id) ===
                         String(freshContext.groupId)
                 );
+                
+            if (!currentGroup) {
+                return;
+            }
     
             const groupCharacters =
                 freshContext.characters.filter(
@@ -59,7 +63,9 @@ jQuery(() => {
                     freshContext.groupId
                 ] = {
 
-                    enabled: false
+                    enabled: false,
+                    
+                    everyoneWords: ""
 
                 };
 
@@ -113,6 +119,30 @@ jQuery(() => {
                 console.log(
                     "[ 🦜 Natural Extended ] Enabled:",
                     enableCheckbox.checked
+                );
+            
+            };
+            
+            const everyoneInput =
+                document.getElementById(
+                    "ne-everyone"
+                );
+                
+            everyoneInput.value =
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].everyoneWords;
+                
+            everyoneInput.oninput = () => {
+
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].everyoneWords =
+                    everyoneInput.value;
+            
+                console.log(
+                    "[ 🦜 Natural Extended ] Everyone words:",
+                    everyoneInput.value
                 );
             
             };
