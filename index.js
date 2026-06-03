@@ -167,12 +167,31 @@ jQuery(() => {
                 context.eventTypes.MESSAGE_SENT,
                 () => {
             
-                    console.log(
-                        "[ 🦜 Natural Extended ] MESSAGE_SENT"
-                    );
+                    const freshContext =
+                        SillyTavern.getContext();
             
+                    const lastMessage =
+                        freshContext.chat[
+                            freshContext.chat.length - 1
+                        ];
+            
+                    console.log(
+                        "[ 🦜 Natural Extended ] Last message:",
+                        lastMessage.mes
+                    );
+                    
+                    if (
+                        lastMessage.mes
+                            .toLowerCase()
+                            .includes("siri")
+                    ) {
+                    
+                        console.log(
+                            "[ 🦜 Natural Extended ] Siri detected!"
+                        );
+                    }
                 }
-            );
+            );        
         }
     );     
         
