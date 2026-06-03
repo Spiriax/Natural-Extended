@@ -19,6 +19,16 @@ jQuery(() => {
                 freshContext.groups?.find(
                     g => String(g.id) === String(freshContext.groupId)
                 );
+                
+            const groupCharacters =
+                freshContext.characters.filter(character =>
+                    currentGroup.members.includes(character.avatar)
+                );
+
+            console.log(
+                "Group characters:",
+                groupCharacters
+            );
     
             console.log("Current group:", currentGroup);
     
