@@ -118,16 +118,8 @@ jQuery(() => {
         
     const panels = document.querySelectorAll('.inline-drawer-content');
 
-    const panel = panels[14];
-    
-    const panel = panels[13];
-    
-    const panel = panels[12];
-    
-    const panel = panels[11];
-    
-    const panel = panels[10];
-    
+    const panel = panels[16];
+       
     if (!panel) {
         console.log("[ 🦜 Natural Extended ] ❓ Could not find group panel!❓");
         return;
@@ -139,12 +131,10 @@ jQuery(() => {
     <div id="natural-extended-panel" style="margin-top:10px;">
 
         <div
-            id="ne-header"
-            class="
-                inline-drawer-header
-                inline-drawer-toggle
+            style="
+                margin-bottom:10px;
+                font-weight:bold;
             "
-            style="margin-bottom:10px;"
         >
             Natural Extended Settings
         </div>
