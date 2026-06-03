@@ -130,7 +130,14 @@ jQuery(() => {
     div.innerHTML = `
     <div id="natural-extended-panel" style="margin-top:10px;">
 
-        <div class="inline-drawer-header" style="margin-bottom:10px;">
+        <div
+            id="ne-header"
+            class="
+                inline-drawer-header
+                inline-drawer-toggle
+            "
+            style="margin-bottom:10px;"
+        >
             Natural Extended Settings
         </div>
         
