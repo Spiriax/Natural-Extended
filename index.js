@@ -107,6 +107,27 @@ jQuery(() => {
             
                 }
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
                 const respondInput =
                     document.getElementById(
                         `respond-${character.name}`
@@ -217,38 +238,14 @@ jQuery(() => {
                 document.getElementById(
                     "ne-everyone"
                 );
-                
+            
             everyoneInput.value =
                 naturalExtendedSettings[
                     freshContext.groupId
                 ].everyoneWords;
-                
+            
             everyoneInput.oninput = () => {
             
-                const maxInput =
-                    document.getElementById(
-                        "ne-max-mentions"
-                    );
-                
-                maxInput.value =
-                    naturalExtendedSettings[
-                        freshContext.groupId
-                    ].maxTriggeredCharacters;
-                
-                maxInput.oninput = () => {
-                
-                    naturalExtendedSettings[
-                        freshContext.groupId
-                    ].maxTriggeredCharacters =
-                        Number(maxInput.value);
-                
-                    console.log(
-                        "[ 🦜 Natural Extended ] Max Triggered Characters:",
-                        maxInput.value
-                    );
-                
-                };
-
                 naturalExtendedSettings[
                     freshContext.groupId
                 ].everyoneWords =
@@ -260,10 +257,60 @@ jQuery(() => {
                 );
             
             };
+            
+            const maxInput =
+                document.getElementById(
+                    "ne-max-mentions"
+                );
+            
+            maxInput.value =
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].maxTriggeredCharacters;
+            
+            maxInput.oninput = () => {
+            
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].maxTriggeredCharacters =
+                    Number(maxInput.value);
+            
+                console.log(
+                    "[ 🦜 Natural Extended ] Max Triggered Characters:",
+                    maxInput.value
+                );
+            
+            };
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
 
-            console.log(
-                naturalExtendedSettings
-            );
+                
+                console.log(
+                    naturalExtendedSettings
+                );
     
             console.log(
                 "[Natural Extended]",
@@ -310,6 +357,23 @@ jQuery(() => {
     
         }
     );          
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     const panels = document.querySelectorAll('.inline-drawer-content');
 
