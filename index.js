@@ -6,84 +6,53 @@ jQuery(() => {
     context.eventSource.on(
         context.eventTypes.CHAT_CHANGED,
         () => {
-            console.log("🔥 CHAT_CHANGED");
-
-            const freshContext = SillyTavern.getContext();
+            console.log(
+                "🦜 [Natural Extended] detected chat change!"
+            );
     
-            console.log("Fresh context:", freshContext);
-            console.log("Group ID:", freshContext.groupId);
-            console.log("Characters:", freshContext.characters);
-            console.log("Chat length:", freshContext.chat.length);
+            const freshContext =
+                SillyTavern.getContext();
+    
+            if (!freshContext.groupId) {
+                console.log(
+                    "[Natural Extended] ❌ Single chat detected! ❌"
+                );
+                return;
+            }
     
             const currentGroup =
-                freshContext.groups?.find(
-                    g => String(g.id) === String(freshContext.groupId)
+                freshContext.groups.find(
+                    g =>
+                        String(g.id) ===
+                        String(freshContext.groupId)
                 );
-                
+    
             const groupCharacters =
-                freshContext.characters.filter(character =>
-                    currentGroup.members.includes(character.avatar)
+                freshContext.characters.filter(
+                    character =>
+                        currentGroup.members.includes(
+                            character.avatar
+                        )
                 );
-
-            console.log(
-                "Group characters:",
-                groupCharacters
-            );
-    
-            console.log("Current group:", currentGroup);
     
             console.log(
-                "Group members:",
-                currentGroup?.members
+                "[Natural Extended]",
+                {
+                    groupId: freshContext.groupId,
+                    groupName: currentGroup.name,
+                    members: currentGroup.members,
+                    characters: groupCharacters.map(
+                        c => c.name
+                    )
+                }
             );
-    
-            const memberCards = document.querySelectorAll(
-                '#groupCurrentMemberList .group_member'
-            );
-    
-            console.log("Member cards:", memberCards);
         }
-    );    
+    );     
     
-    console.log(context.eventTypes);
-    
-    Object.entries(context.eventTypes).forEach(([key, value]) => {
-        console.log(key, value);
-    });
-
-    if (context.eventSource) {
-        console.log("Event source found");
-    }
-    
-    console.log("Context:", context);
-    console.log("Group ID:", context.groupId);
-    console.log("Groups:", context.groups);
-    console.log("Characters:", context.characters);
-    console.log("Current character ID:", context.characterId);
-    console.log("Current group ID:", context.groupId);
-    console.log("Current chat:", context.chat);
-    console.log("Tags:", context.tags);
-    console.log("Name1:", context.name1);
-    console.log("Current chat length:", context.chat.length);
-    console.log("Name2:", context.name2);
-    console.log("TagMap:", context.tagMap);
-    console.log("getCharacters:", context.getCharacters);
-    context.getCharacters().then(result => {
-        console.log("getCharacters() result:", result);
-    });
-
     const panels = document.querySelectorAll('.inline-drawer-content');
-
-    console.log("Found panels:", panels.length);
 
     const panel = panels[16];
     
-    const memberCards = document.querySelectorAll(
-        '#groupCurrentMemberList .group_member'
-    );
-
-    console.log("Member cards:", memberCards);
-
     if (!panel) {
         console.log("Natural Extended panel not found");
         return;
@@ -145,13 +114,5 @@ jQuery(() => {
 
     panel.appendChild(div);
     
-    if (context.eventSource) {
-    console.log("Subscribing to events");
-
-    context.eventSource.onAny?.((eventName, ...args) => {
-        console.log("[Natural Extended Event]", eventName, args);
-    });
-}
-
     console.log("Natural Extended injected");
 });
