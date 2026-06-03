@@ -191,7 +191,14 @@ jQuery(() => {
     
     panel.appendChild(div);
     
-    div.style.display = "none";
+    const extensionPanel =
+        document.getElementById(
+            "natural-extended-panel"
+        );
+
+    if (extensionPanel) {
+        extensionPanel.style.display = "none";
+    }
         
     console.log("Natural Extended injected");
 });
