@@ -7,7 +7,7 @@ jQuery(() => {
         context.eventTypes.CHAT_CHANGED,
         () => {
             console.log(
-                "🦜 [Natural Extended] detected chat change!"
+                "[ 🦜 Natural Extended ] Detected chat change! 💬"
             );
     
             const freshContext =
@@ -15,7 +15,7 @@ jQuery(() => {
     
             if (!freshContext.groupId) {
                 console.log(
-                    "[Natural Extended] ❌ Single chat detected! ❌"
+                    "[ 🦜 Natural Extended ] ❌ Single chat detected! ❌"
                 );
                 return;
             }
@@ -78,6 +78,36 @@ jQuery(() => {
             Group Reply Strategy will automatically be set to Manual while Natural Extended is enabled.
         </p>
 
+        <hr>
+        
+        <div class="ne-character-section">
+
+            <h4>Siri</h4>
+
+            <div style="display:flex; gap:10px;">
+        
+                <div style="flex:1;">
+                    <label>Respond</label>
+                    <br>
+                    <input
+                        type="text"
+                        class="text_pole flex1"
+                    />
+                </div>
+        
+                <div style="flex:1;">
+                    <label>Ignore</label>
+                    <br>
+                    <input
+                        type="text"
+                        class="text_pole flex1"
+                    />
+                </div>
+        
+            </div>
+        
+        </div>
+        
         <hr>
 
         <div style="margin-top:10px;">
