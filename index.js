@@ -65,7 +65,11 @@ jQuery(() => {
 
                     enabled: false,
                     
-                    everyoneWords: ""
+                    everyoneWords: "",
+                    
+                    maxTriggeredCharacters: 0,
+                    
+                    characters: {}
 
                 };
 
@@ -176,40 +180,42 @@ jQuery(() => {
                         c => c.name
                     )
                 }
-            );
-            
-            context.eventSource.on(
-                context.eventTypes.MESSAGE_SENT,
-                () => {
-            
-                    const freshContext =
-                        SillyTavern.getContext();
-            
-                    const lastMessage =
-                        freshContext.chat[
-                            freshContext.chat.length - 1
-                        ];
-            
-                    console.log(
-                        "[ 🦜 Natural Extended ] Last message:",
-                        lastMessage.mes
-                    );
-                    
-                    if (
-                        lastMessage.mes
-                            .toLowerCase()
-                            .includes("siri")
-                    ) {
-                    
-                        console.log(
-                            "[ 🦜 Natural Extended ] Siri detected!"
-                        );
-                    }
-                }
-            );        
+            );  
         }
     );     
-        
+    
+    context.eventSource.on(
+        context.eventTypes.MESSAGE_SENT,
+        () => {
+    
+            const freshContext =
+                SillyTavern.getContext();
+    
+            const lastMessage =
+                freshContext.chat[
+                    freshContext.chat.length - 1
+                ];
+    
+            console.log(
+                "[ 🦜 Natural Extended ] Last message:",
+                lastMessage.mes
+            );
+    
+            if (
+                lastMessage.mes
+                    .toLowerCase()
+                    .includes("siri")
+            ) {
+    
+                console.log(
+                    "[ 🦜 Natural Extended ] Siri detected!"
+                );
+    
+            }
+    
+        }
+    );          
+    
     const panels = document.querySelectorAll('.inline-drawer-content');
 
     const panel = panels[16];
@@ -285,8 +291,9 @@ jQuery(() => {
 
     </div>
     `;
-    
+        
     function renderCharacterSections(groupCharacters) {
+
         const characterContainer =
             document.getElementById(
                 "ne-character-container"
@@ -299,6 +306,7 @@ jQuery(() => {
         characterContainer.innerHTML = "";
     
         groupCharacters.forEach(character => {
+    
             characterContainer.innerHTML += `
                 <hr>
     
