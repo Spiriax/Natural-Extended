@@ -5,6 +5,7 @@ jQuery(() => {
     
     context.eventSource.on(
         context.eventTypes.CHAT_CHANGED,
+        
         () => {
             console.log(
                 "[ 🦜 Natural Extended ] Detected chat change! 💬"
@@ -34,6 +35,10 @@ jQuery(() => {
                             character.avatar
                         )
                 );
+                
+            renderCharacterSections(
+                groupCharacters
+            );
     
             console.log(
                 "[Natural Extended]",
@@ -115,79 +120,56 @@ jQuery(() => {
 
     </div>
     `;
-
+    
+    function renderCharacterSections(groupCharacters) {
+        const characterContainer =
+            document.getElementById(
+                "ne-character-container"
+            );
+    
+        if (!characterContainer) {
+            return;
+        }
+    
+        characterContainer.innerHTML = "";
+    
+        groupCharacters.forEach(character => {
+            characterContainer.innerHTML += `
+                <hr>
+    
+                <div style="margin-top:10px;">
+                    <h4 style="color:#f0c040;">
+                        ${character.name}
+                    </h4>
+    
+                    <div
+                        style="
+                            display:flex;
+                            gap:10px;
+                        "
+                    >
+                        <div style="flex:1;">
+                            <label>Respond</label>
+                            <input
+                                class="text_pole flex1"
+                                type="text"
+                            >
+                        </div>
+    
+                        <div style="flex:1;">
+                            <label>Ignore</label>
+                            <input
+                                class="text_pole flex1"
+                                type="text"
+                            >
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+    
     panel.appendChild(div);
-    
-    const characterContainer =
-        document.getElementById(
-            "ne-character-container"
-        );
-        
-    const currentGroup =
-        context.groups.find(
-            g => String(g.id) === String(context.groupId)
-        );
-
-    const groupCharacters =
-        context.characters.filter(
-            character =>
-                currentGroup.members.includes(
-                    character.avatar
-                )
-        );
-        
-    console.log(groupCharacters);
-        
-    groupCharacters.forEach(character => {
-
-        const section =
-            document.createElement("div");
-
-        section.innerHTML = `
-            <div
-                style="
-                    color:#f0d000;
-                    font-weight:bold;
-                    margin-bottom:10px;
-                "
-            >
-                ${character.name}
-            </div>
-    
-            <div
-                style="
-                    display:flex;
-                    gap:10px;
-                "
-            >
-    
-                <div style="flex:1;">
-                    <label>Respond</label>
-                    <br>
-                    <input
-                        type="text"
-                        class="text_pole flex1"
-                    />
-                </div>
-    
-                <div style="flex:1;">
-                    <label>Ignore</label>
-                    <br>
-                    <input
-                        type="text"
-                        class="text_pole flex1"
-                    />
-                </div>
-    
-            </div>
-    
-            <hr>
-        `;
-    
-        characterContainer.appendChild(
-            section
-        );
-    });
         
     console.log("Natural Extended injected");
 });
