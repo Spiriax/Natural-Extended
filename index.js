@@ -136,6 +136,8 @@ jQuery(() => {
                 )
         );
         
+    console.log(groupCharacters);
+        
     groupCharacters.forEach(character => {
 
         const section =
