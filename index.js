@@ -88,11 +88,6 @@ jQuery(() => {
                 gap:10px;
                 margin-bottom:10px;
             ">
-                <img
-                    src="/thumbnail?type=avatar&file=Siri.png"
-                    width="40"
-                    height="40"
-                >
             
                 <span style="
                     color:#f0d000;
