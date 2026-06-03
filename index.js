@@ -89,6 +89,16 @@ jQuery(() => {
                 naturalExtendedSettings[
                     freshContext.groupId
                 ].enabled;
+                
+            const settingsContent =
+                document.getElementById(
+                    "ne-settings-content"
+                );
+            
+            settingsContent.style.display =
+                enableCheckbox.checked
+                    ? "block"
+                    : "none";
             
             enableCheckbox.onchange = () => {
             
@@ -96,6 +106,11 @@ jQuery(() => {
                     freshContext.groupId
                 ].enabled =
                     enableCheckbox.checked;
+                    
+                settingsContent.style.display =
+                    enableCheckbox.checked
+                        ? "block"
+                        : "none";
             
                 if (enableCheckbox.checked) {
     
@@ -224,6 +239,8 @@ jQuery(() => {
             <input type="checkbox" id="ne-enabled">
             Enable for this group
         </label>
+        
+        <div id="ne-settings-content">
 
         <p style="opacity:0.7; margin-top:5px;">
             Group Reply Strategy will automatically be set to Manual while Natural Extended is enabled.
@@ -263,6 +280,8 @@ jQuery(() => {
                 style="width:60px;"
             >
         </div>
+
+    </div>
 
     </div>
     `;
