@@ -35,6 +35,11 @@ jQuery(() => {
                             character.avatar
                         )
                 );
+            
+            groupCharacters.sort(
+                (a, b) =>
+                    a.name.localeCompare(b.name)
+            );
                 
             renderCharacterSections(
                 groupCharacters
