@@ -74,6 +74,30 @@ jQuery(() => {
                 groupCharacters
             );
             
+            const enableCheckbox =
+                document.getElementById(
+                    "ne-enabled"
+                );
+            
+            enableCheckbox.checked =
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].enabled;
+            
+            enableCheckbox.onchange = () => {
+            
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].enabled =
+                    enableCheckbox.checked;
+            
+                console.log(
+                    "[ 🦜 Natural Extended ] Enabled:",
+                    enableCheckbox.checked
+                );
+            
+            };
+
             console.log(
                 naturalExtendedSettings
             );
@@ -91,7 +115,7 @@ jQuery(() => {
             );
         }
     );     
-    
+        
     const panels = document.querySelectorAll('.inline-drawer-content');
 
     const panel = panels[16];
