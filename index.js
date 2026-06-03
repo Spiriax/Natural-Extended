@@ -7,19 +7,24 @@ jQuery(() => {
         context.eventTypes.CHAT_CHANGED,
         () => {
             console.log("🔥 CHAT_CHANGED");
-    
+
             const freshContext = SillyTavern.getContext();
     
             console.log("Fresh context:", freshContext);
             console.log("Group ID:", freshContext.groupId);
             console.log("Characters:", freshContext.characters);
             console.log("Chat length:", freshContext.chat.length);
-            
-            console.log(
-                "Current group:",
+    
+            const currentGroup =
                 freshContext.groups?.find(
                     g => String(g.id) === String(freshContext.groupId)
-                )
+                );
+    
+            console.log("Current group:", currentGroup);
+    
+            console.log(
+                "Group members:",
+                currentGroup?.members
             );
     
             const memberCards = document.querySelectorAll(
