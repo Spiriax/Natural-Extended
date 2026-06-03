@@ -224,6 +224,30 @@ jQuery(() => {
                 ].everyoneWords;
                 
             everyoneInput.oninput = () => {
+            
+                const maxInput =
+                    document.getElementById(
+                        "ne-max-mentions"
+                    );
+                
+                maxInput.value =
+                    naturalExtendedSettings[
+                        freshContext.groupId
+                    ].maxTriggeredCharacters;
+                
+                maxInput.oninput = () => {
+                
+                    naturalExtendedSettings[
+                        freshContext.groupId
+                    ].maxTriggeredCharacters =
+                        Number(maxInput.value);
+                
+                    console.log(
+                        "[ 🦜 Natural Extended ] Max Triggered Characters:",
+                        maxInput.value
+                    );
+                
+                };
 
                 naturalExtendedSettings[
                     freshContext.groupId
@@ -231,7 +255,7 @@ jQuery(() => {
                     everyoneInput.value;
             
                 console.log(
-                    "[ 🦜 Natural Extended ] Everyone words:",
+                    "[ 🦜 Natural Extended ] Trigger All words:",
                     everyoneInput.value
                 );
             
