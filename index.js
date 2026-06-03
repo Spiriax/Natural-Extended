@@ -15,7 +15,7 @@ jQuery(() => {
     
             if (!freshContext.groupId) {
                 console.log(
-                    "[ 🦜 Natural Extended ] ❌ Single chat detected! ❌"
+                    "[ 🦜 Natural Extended ] ❌ Single chat detected!❌"
                 );
                 return;
             }
@@ -54,7 +54,7 @@ jQuery(() => {
     const panel = panels[16];
     
     if (!panel) {
-        console.log("Natural Extended panel not found");
+        console.log("[ 🦜 Natural Extended ] ❓ Could not find group panel!❓");
         return;
     }
 
@@ -82,7 +82,25 @@ jQuery(() => {
         
         <div class="ne-character-section">
 
-            <h4>Siri</h4>
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:10px;
+                margin-bottom:10px;
+            ">
+                <img
+                    src="/thumbnail?type=avatar&file=Siri.png"
+                    width="40"
+                    height="40"
+                >
+            
+                <span style="
+                    color:#f0d000;
+                    font-weight:bold;
+                ">
+                    Siri
+                </span>
+            </div>
 
             <div style="display:flex; gap:10px;">
         
