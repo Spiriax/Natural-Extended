@@ -338,10 +338,7 @@ jQuery(() => {
                     freshContext.chat.length - 1
                 ];
     
-            console.log(
-                "[ 🦜 Natural Extended ] Last message:",
-                lastMessage.mes
-            );
+            const triggeredCharacters = [];
     
             if (
                 lastMessage.mes
@@ -349,15 +346,23 @@ jQuery(() => {
                     .includes("siri")
             ) {
     
+                triggeredCharacters.push(
+                    "Siri"
+                );
+    
                 console.log(
                     "[ 🦜 Natural Extended ] Siri detected!"
                 );
     
             }
     
-        }
-    );          
+            console.log(
+                "[ 🦜 Natural Extended ] Triggered:",
+                triggeredCharacters
+            );
     
+        }
+    );    
     
     
     
