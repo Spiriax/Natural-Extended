@@ -345,15 +345,31 @@ jQuery(() => {
                     .toLowerCase()
                     .includes("siri")
             ) {
-    
+            
                 triggeredCharacters.push(
                     "Siri"
                 );
-    
+            
                 console.log(
                     "[ 🦜 Natural Extended ] Siri detected!"
                 );
-    
+            
+            }
+            
+            if (
+                lastMessage.mes
+                    .toLowerCase()
+                    .includes("tindra")
+            ) {
+            
+                triggeredCharacters.push(
+                    "Tindra"
+                );
+            
+                console.log(
+                    "[ 🦜 Natural Extended ] Tindra detected!"
+                );
+            
             }
     
             console.log(
