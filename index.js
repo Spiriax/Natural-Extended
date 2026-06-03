@@ -1,3 +1,5 @@
+const naturalExtendedSettings = {};
+
 jQuery(() => {
     console.log("Natural Extended loaded");
     
@@ -50,6 +52,18 @@ jQuery(() => {
                             character.avatar
                         )
                 );
+                
+            if (!naturalExtendedSettings[freshContext.groupId]) {
+
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ] = {
+
+                    enabled: false
+
+                };
+
+            }
             
             groupCharacters.sort(
                 (a, b) =>
@@ -58,6 +72,10 @@ jQuery(() => {
                 
             renderCharacterSections(
                 groupCharacters
+            );
+            
+            console.log(
+                naturalExtendedSettings
             );
     
             console.log(
@@ -202,3 +220,7 @@ jQuery(() => {
         
     console.log("Natural Extended injected");
 });
+
+// TODO:
+// Only show Natural Extended inside actual group chats.
+// Current implementation injects into panel[16].
