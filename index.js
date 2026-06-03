@@ -162,6 +162,17 @@ jQuery(() => {
                     )
                 }
             );
+            
+            context.eventSource.on(
+                context.eventTypes.MESSAGE_SENT,
+                () => {
+            
+                    console.log(
+                        "[ 🦜 Natural Extended ] MESSAGE_SENT"
+                    );
+            
+                }
+            );
         }
     );     
         
