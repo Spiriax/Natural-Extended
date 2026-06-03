@@ -13,14 +13,29 @@ jQuery(() => {
     
             const freshContext =
                 SillyTavern.getContext();
+                
+            const extensionPanel =
+                document.getElementById(
+                    "natural-extended-panel"
+                );    
     
             if (!freshContext.groupId) {
+
+                if (extensionPanel) {
+                    extensionPanel.style.display = "none";
+                }
+            
                 console.log(
                     "[ 🦜 Natural Extended ] ❌ Single chat detected!❌"
                 );
+            
                 return;
+            }    
+            
+            if (extensionPanel) {
+                extensionPanel.style.display = "block";
             }
-    
+            
             const currentGroup =
                 freshContext.groups.find(
                     g =>
@@ -175,6 +190,8 @@ jQuery(() => {
     }
     
     panel.appendChild(div);
+    
+    div.style.display = "none";
         
     console.log("Natural Extended injected");
 });
