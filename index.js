@@ -80,47 +80,8 @@ jQuery(() => {
 
         <hr>
         
-        <div class="ne-character-section">
-
-            <div style="
-                display:flex;
-                align-items:center;
-                gap:10px;
-                margin-bottom:10px;
-            ">
-            
-                <span style="
-                    color:#f0d000;
-                    font-weight:bold;
-                ">
-                    Siri
-                </span>
-            </div>
-
-            <div style="display:flex; gap:10px;">
-        
-                <div style="flex:1;">
-                    <label>Respond</label>
-                    <br>
-                    <input
-                        type="text"
-                        class="text_pole flex1"
-                    />
-                </div>
-        
-                <div style="flex:1;">
-                    <label>Ignore</label>
-                    <br>
-                    <input
-                        type="text"
-                        class="text_pole flex1"
-                    />
-                </div>
-        
-            </div>
-        
-        </div>
-        
+        <div id="ne-character-container"></div>
+                
         <hr>
 
         <div style="margin-top:10px;">
@@ -157,5 +118,74 @@ jQuery(() => {
 
     panel.appendChild(div);
     
+    const characterContainer =
+        document.getElementById(
+            "ne-character-container"
+        );
+        
+    const currentGroup =
+        context.groups.find(
+            g => String(g.id) === String(context.groupId)
+        );
+
+    const groupCharacters =
+        context.characters.filter(
+            character =>
+                currentGroup.members.includes(
+                    character.avatar
+                )
+        );
+        
+    groupCharacters.forEach(character => {
+
+        const section =
+            document.createElement("div");
+
+        section.innerHTML = `
+            <div
+                style="
+                    color:#f0d000;
+                    font-weight:bold;
+                    margin-bottom:10px;
+                "
+            >
+                ${character.name}
+            </div>
+    
+            <div
+                style="
+                    display:flex;
+                    gap:10px;
+                "
+            >
+    
+                <div style="flex:1;">
+                    <label>Respond</label>
+                    <br>
+                    <input
+                        type="text"
+                        class="text_pole flex1"
+                    />
+                </div>
+    
+                <div style="flex:1;">
+                    <label>Ignore</label>
+                    <br>
+                    <input
+                        type="text"
+                        class="text_pole flex1"
+                    />
+                </div>
+    
+            </div>
+    
+            <hr>
+        `;
+    
+        characterContainer.appendChild(
+            section
+        );
+    });
+        
     console.log("Natural Extended injected");
 });
