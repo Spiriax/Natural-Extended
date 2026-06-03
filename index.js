@@ -91,6 +91,25 @@ jQuery(() => {
                 ].enabled =
                     enableCheckbox.checked;
             
+                if (enableCheckbox.checked) {
+    
+                    const strategySelect =
+                        document.getElementById(
+                            "rm_group_activation_strategy"
+                        );
+                
+                    if (strategySelect) {
+                
+                        strategySelect.value = "2";
+                
+                        strategySelect.dispatchEvent(
+                            new Event("change")
+                        );
+                
+                    }
+                    
+                }
+            
                 console.log(
                     "[ 🦜 Natural Extended ] Enabled:",
                     enableCheckbox.checked
