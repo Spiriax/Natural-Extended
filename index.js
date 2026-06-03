@@ -118,7 +118,7 @@ jQuery(() => {
         
     const panels = document.querySelectorAll('.inline-drawer-content');
 
-    const panel = panels[17];
+    const panel = panels[18];
     
     if (!panel) {
         console.log("[ 🦜 Natural Extended ] ❓ Could not find group panel!❓");
