@@ -107,27 +107,6 @@ jQuery(() => {
             
                 }
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
                 const respondInput =
                     document.getElementById(
                         `respond-${character.name}`
@@ -281,33 +260,7 @@ jQuery(() => {
                 );
             
             };
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                
+                    
                 console.log(
                     naturalExtendedSettings
                 );
@@ -371,6 +324,12 @@ jQuery(() => {
                 );
             
             }
+            
+            console.log(
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ]
+            );
     
             console.log(
                 "[ 🦜 Natural Extended ] Triggered:",
@@ -379,23 +338,7 @@ jQuery(() => {
     
         }
     );    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
     const panels = document.querySelectorAll('.inline-drawer-content');
 
     const panel = panels[16];
