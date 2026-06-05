@@ -520,12 +520,12 @@ jQuery(() => {
             ) {
             
                 const chid =
-                    characters.findIndex(
+                    freshContext.characters.findIndex(
                         character =>
                             character.name
                             === characterName
                     );
-            
+                
                 console.log(
                     "[ 🦜 Natural Extended ] ChID:",
                     characterName,
