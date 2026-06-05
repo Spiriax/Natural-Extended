@@ -293,38 +293,54 @@ jQuery(() => {
     
             const triggeredCharacters = [];
     
-            if (
-                lastMessage.mes
-                    .toLowerCase()
-                    .includes("siri")
+            const characters =
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].characters;
+            
+            for (
+                const characterName
+                in characters
             ) {
             
-                triggeredCharacters.push(
-                    "Siri"
-                );
+                const respondWords =
+                    characters[
+                        characterName
+                    ].respond
+                        .split(",");
             
-                console.log(
-                    "[ 🦜 Natural Extended ] Siri detected!"
-                );
+                for (
+                    const word
+                    of respondWords
+                ) {
             
-            }
+                    if (
+                        lastMessage.mes
+                            .toLowerCase()
+                            .includes(
+                                word
+                                    .trim()
+                                    .toLowerCase()
+                            )
+                    ) {
             
-            if (
-                lastMessage.mes
-                    .toLowerCase()
-                    .includes("tindra")
-            ) {
+                        triggeredCharacters.push(
+                            characterName
+                        );
             
-                triggeredCharacters.push(
-                    "Tindra"
-                );
+                        console.log(
+                            "[ 🦜 Natural Extended ]",
+                            characterName,
+                            "detected!"
+                        );
             
-                console.log(
-                    "[ 🦜 Natural Extended ] Tindra detected!"
-                );
+                        break;
             
-            }
+                    }
             
+                }
+            
+            }            
             console.log(
                 naturalExtendedSettings[
                     freshContext.groupId
