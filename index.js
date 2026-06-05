@@ -291,7 +291,7 @@ jQuery(() => {
                     freshContext.chat.length - 1
                 ];
     
-            const triggeredCharacters = [];
+            const matchedCharacters = [];
     
             const characters =
                 naturalExtendedSettings[
@@ -352,9 +352,20 @@ jQuery(() => {
                     everyoneTriggered
                 ) {
                 
-                    triggeredCharacters.push(
-                        characterName
+                    matchedCharacters.push({
+                        characterName,
+                        position: -1
+                    });
+                
+                    console.log(
+                        "[ 🦜 Natural Extended ]",
+                        characterName,
+                        "forced by everyone trigger"
                     );
+                
+                    continue;
+                
+                }
                 
                     console.log(
                         "[ 🦜 Natural Extended ]",
@@ -445,10 +456,14 @@ jQuery(() => {
                             )
                     ) {
             
-                        triggeredCharacters.push(
-                            characterName
-                        );
-            
+                        matchedCharacters.push({
+                            characterName,
+                            position:
+                                lastMessage.mes
+                                    .toLowerCase()
+                                    .indexOf(cleanWord)
+                        });      
+      
                         console.log(
                             "[ 🦜 Natural Extended ]",
                             characterName,
@@ -468,6 +483,17 @@ jQuery(() => {
                 naturalExtendedSettings[
                     freshContext.groupId
                 ].maxTriggeredCharacters;
+                
+            matchedCharacters.sort(
+                (a, b) =>
+                    a.position - b.position
+            );
+            
+            const triggeredCharacters =
+                matchedCharacters.map(
+                    match =>
+                        match.characterName
+                );
             
             if (
                 maxTriggered > 0
@@ -638,5 +664,8 @@ jQuery(() => {
 });
 
 // TODO:
+// Add Continue-toggle which makes conversational lock.
+// Add Word Count-function to Continue function so it only checks for new trigger within X words.
+// Add some functionality to Talkativeness.
 // Only show Natural Extended inside actual group chats.
 // Current implementation injects into panel[16].
