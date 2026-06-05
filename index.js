@@ -508,13 +508,22 @@ jQuery(() => {
                 triggeredCharacters
             );
             
-            if (
-                triggeredCharacters.length
+            for (
+                const characterName
+                of triggeredCharacters
             ) {
             
+                const chid =
+                    characters.findIndex(
+                        character =>
+                            character.name
+                            === characterName
+                    );
+            
                 console.log(
-                    "[ 🦜 Natural Extended ] Would generate:",
-                    triggeredCharacters[0]
+                    "[ 🦜 Natural Extended ] ChID:",
+                    characterName,
+                    chid
                 );
             
             }
