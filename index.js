@@ -297,11 +297,74 @@ jQuery(() => {
                 naturalExtendedSettings[
                     freshContext.groupId
                 ].characters;
+                
+            const everyoneWords =
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].everyoneWords
+                    .split(",");
+            
+            let everyoneTriggered =
+                false;
+            
+            for (
+                const word
+                of everyoneWords
+            ) {
+            
+                const cleanWord =
+                    word
+                        .trim()
+                        .toLowerCase();
+            
+                if (!cleanWord) {
+                    continue;
+                }
+            
+                if (
+                    lastMessage.mes
+                        .toLowerCase()
+                        .includes(
+                            cleanWord
+                        )
+                ) {
+            
+                    everyoneTriggered =
+                        true;
+            
+                    console.log(
+                        "[ 🦜 Natural Extended ] Everyone triggered by:",
+                        cleanWord
+                    );
+            
+                    break;
+            
+                }
+            
+            }
             
             for (
                 const characterName
                 in characters
             ) {
+            
+                if (
+                    everyoneTriggered
+                ) {
+                
+                    triggeredCharacters.push(
+                        characterName
+                    );
+                
+                    console.log(
+                        "[ 🦜 Natural Extended ]",
+                        characterName,
+                        "forced by everyone trigger"
+                    );
+                
+                    continue;
+                
+                }
             
                 const respondWords =
                     characters[
