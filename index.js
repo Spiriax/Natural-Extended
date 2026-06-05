@@ -462,7 +462,23 @@ jQuery(() => {
             
                 }
             
-            }            
+            }         
+            
+            const maxTriggered =
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ].maxTriggeredCharacters;
+            
+            if (
+                maxTriggered > 0
+            ) {
+            
+                triggeredCharacters.splice(
+                    maxTriggered
+                );
+            
+            }
+   
             console.log(
                 naturalExtendedSettings[
                     freshContext.groupId
