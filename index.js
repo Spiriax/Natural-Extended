@@ -346,7 +346,8 @@ jQuery(() => {
                         console.log(
                             "[ 🦜 Natural Extended ]",
                             characterName,
-                            "ignored!"
+                            "ignored by:",
+                            cleanIgnoreWord
                         );
                 
                         break;
@@ -388,9 +389,10 @@ jQuery(() => {
                         console.log(
                             "[ 🦜 Natural Extended ]",
                             characterName,
-                            "detected!"
-                        );
-            
+                            "detected by:",
+                            cleanWord
+                        );            
+                        
                         break;
             
                     }
