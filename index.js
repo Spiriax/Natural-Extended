@@ -543,12 +543,12 @@ jQuery(() => {
                     chid
                 );
                 
-                freshContext.generate(
+                await freshContext.generate(
                     "normal",
                     {
                         force_chid: chid
                     }
-                );       
+                );    
      
             }
     
