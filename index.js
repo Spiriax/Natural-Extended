@@ -314,13 +314,20 @@ jQuery(() => {
                     of respondWords
                 ) {
             
+                    const cleanWord =
+                        word
+                            .trim()
+                            .toLowerCase();
+                    
+                    if (!cleanWord) {
+                        continue;
+                    }
+                    
                     if (
                         lastMessage.mes
                             .toLowerCase()
                             .includes(
-                                word
-                                    .trim()
-                                    .toLowerCase()
+                                cleanWord
                             )
                     ) {
             
