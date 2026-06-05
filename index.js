@@ -308,6 +308,56 @@ jQuery(() => {
                         characterName
                     ].respond
                         .split(",");
+                        
+                const ignoreWords =
+                    characters[
+                        characterName
+                    ].ignore
+                        .split(",");
+                
+                let shouldIgnore =
+                    false;
+                
+                for (
+                    const ignoreWord
+                    of ignoreWords
+                ) {
+                
+                    const cleanIgnoreWord =
+                        ignoreWord
+                            .trim()
+                            .toLowerCase();
+                
+                    if (!cleanIgnoreWord) {
+                        continue;
+                    }
+                
+                    if (
+                        lastMessage.mes
+                            .toLowerCase()
+                            .includes(
+                                cleanIgnoreWord
+                            )
+                    ) {
+                
+                        shouldIgnore =
+                            true;
+                
+                        console.log(
+                            "[ 🦜 Natural Extended ]",
+                            characterName,
+                            "ignored!"
+                        );
+                
+                        break;
+                
+                    }
+                
+                }
+                
+                if (shouldIgnore) {
+                    continue;
+                }
             
                 for (
                     const word
