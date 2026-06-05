@@ -514,6 +514,12 @@ jQuery(() => {
                     .characters
             );
             
+            if (
+                !triggeredCharacters.length
+            ) {
+                return;
+            }
+            
             for (
                 const characterName
                 of triggeredCharacters
@@ -527,11 +533,18 @@ jQuery(() => {
                     );
                 
                 console.log(
-                    "[ 🦜 Natural Extended ] ChID:",
+                    "[ 🦜 Natural Extended ] Generating:",
                     characterName,
                     chid
                 );
-            
+                
+                Generate(
+                    "normal",
+                    {
+                        force_chid: chid
+                    }
+                );       
+     
             }
     
         }
