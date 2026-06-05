@@ -471,6 +471,8 @@ jQuery(() => {
             
             if (
                 maxTriggered > 0
+                &&
+                !everyoneTriggered
             ) {
             
                 triggeredCharacters.splice(
