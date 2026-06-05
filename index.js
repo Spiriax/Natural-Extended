@@ -557,7 +557,7 @@ jQuery(() => {
                     freshContext.characters[chid]
                 );
                 
-                await freshContext.generate(
+                freshContext.generate(
                     "normal",
                     {
                         force_chid: chid
