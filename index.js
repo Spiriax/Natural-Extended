@@ -16,6 +16,11 @@ jQuery(() => {
             const freshContext =
                 SillyTavern.getContext();
                 
+            console.log(
+                "[ 🦜 Natural Extended ] Context:",
+                freshContext
+            );
+                
             const extensionPanel =
                 document.getElementById(
                     "natural-extended-panel"
