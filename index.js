@@ -508,6 +508,12 @@ jQuery(() => {
                 triggeredCharacters
             );
             
+            console.log(
+                "[ 🦜 Natural Extended ] All Characters:",
+                SillyTavern.getContext()
+                    .characters
+            );
+            
             for (
                 const characterName
                 of triggeredCharacters
