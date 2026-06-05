@@ -536,11 +536,25 @@ jQuery(() => {
                             character.name
                             === characterName
                     );
+                    
+                if (chid === -1) {
+                    console.error(
+                        "[Natural Extended] Character not found:",
+                        characterName
+                    );
+                    
+                    continue;
+                }
                 
                 console.log(
                     "[ 🦜 Natural Extended ] Generating:",
                     characterName,
                     chid
+                );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] Character object:",
+                    freshContext.characters[chid]
                 );
                 
                 await freshContext.generate(
