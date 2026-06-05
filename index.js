@@ -351,32 +351,22 @@ jQuery(() => {
                 if (
                     everyoneTriggered
                 ) {
-                
+            
                     matchedCharacters.push({
                         characterName,
                         position: -1
                     });
-                
-                    console.log(
-                        "[ 🦜 Natural Extended ]",
-                        characterName,
-                        "forced by everyone trigger"
-                    );
-                
-                    continue;
-                
-                }
-                
-                    console.log(
-                        "[ 🦜 Natural Extended ]",
-                        characterName,
-                        "forced by everyone trigger"
-                    );
-                
-                    continue;
-                
-                }
             
+                    console.log(
+                        "[ 🦜 Natural Extended ]",
+                        characterName,
+                        "forced by everyone trigger"
+                    );
+            
+                    continue;
+            
+                }
+                                
                 const respondWords =
                     characters[
                         characterName
