@@ -507,6 +507,17 @@ jQuery(() => {
                 "[ 🦜 Natural Extended ] Triggered:",
                 triggeredCharacters
             );
+            
+            if (
+                triggeredCharacters.length
+            ) {
+            
+                console.log(
+                    "[ 🦜 Natural Extended ] Would generate:",
+                    triggeredCharacters[0]
+                );
+            
+            }
     
         }
     );    
