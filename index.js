@@ -595,16 +595,12 @@ jQuery(() => {
 
                 freshContext.characterId =
                     String(chid);
-                    
-                freshContext.setCharacterName(
-                    characterName
-                );
                 
                 console.log(
                     "[ 🦜 Natural Extended ] characterId after set:",
                     freshContext.characterId
                 );
-                
+                                                    
                 freshContext.generate(
                     "normal",
                     {
