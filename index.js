@@ -617,8 +617,8 @@ jQuery(() => {
                 );
                 
                 console.log(
-                    "[ 🦜 Natural Extended ] getCharacters():",
-                    await freshContext.getCharacters()
+                    "[ 🦜 Natural Extended ] getCharacters function:",
+                    freshContext.getCharacters
                 );
                                                     
                 freshContext.generate(
