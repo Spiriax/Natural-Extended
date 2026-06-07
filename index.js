@@ -572,7 +572,7 @@ jQuery(() => {
                     freshContext.name2
                 );
                 
-                freshContext.generate(
+                Generate(
                     "normal",
                     {
                         force_chid: chid
