@@ -600,6 +600,26 @@ jQuery(() => {
                     "[ 🦜 Natural Extended ] characterId after set:",
                     freshContext.characterId
                 );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] selected_group:",
+                    freshContext.groupId
+                );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] characterId:",
+                    freshContext.characterId
+                );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] getCurrentChatId():",
+                    freshContext.getCurrentChatId()
+                );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] getCharacters():",
+                    await freshContext.getCharacters()
+                );
                                                     
                 freshContext.generate(
                     "normal",
@@ -607,6 +627,10 @@ jQuery(() => {
                         force_chid: chid
                     }
                 );  
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] Generate called"
+                );
      
             }
     
