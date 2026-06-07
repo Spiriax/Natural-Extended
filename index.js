@@ -572,7 +572,12 @@ jQuery(() => {
                     freshContext.name2
                 );
                 
-                Generate(
+                console.log(
+                    "[ 🦜 Natural Extended ] Available context keys:",
+                    Object.keys(freshContext)
+                );
+                
+                freshContext.generate(
                     "normal",
                     {
                         force_chid: chid
