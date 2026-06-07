@@ -629,7 +629,7 @@ jQuery(() => {
                 );  
                 
                 console.log(
-                    "[ 🦜 Natural Extended ] Generate called"
+                    "[ 🦜 Natural Extended ] Generate called",
                 );
      
             }
