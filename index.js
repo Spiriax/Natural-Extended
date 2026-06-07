@@ -577,12 +577,26 @@ jQuery(() => {
                     Object.keys(freshContext)
                 );
                 
+                console.log(
+                    "[ 🦜 Natural Extended ] Setting character:",
+                    chid,
+                    characterName
+                );
+
+                freshContext.setCharacterId(
+                    chid
+                );
+                
+                freshContext.setCharacterName(
+                    characterName
+                );
+                
                 freshContext.generate(
                     "normal",
                     {
                         force_chid: chid
                     }
-                );    
+                );  
      
             }
     
