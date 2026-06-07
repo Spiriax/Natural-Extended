@@ -537,6 +537,11 @@ jQuery(() => {
                             === characterName
                     );
                     
+                console.log(
+                    "[ 🦜 Natural Extended ] Target character:",
+                    freshContext.characters[chid]
+                );
+                    
                 if (chid === -1) {
                     console.error(
                         "[Natural Extended] Character not found:",
@@ -555,6 +560,16 @@ jQuery(() => {
                 console.log(
                     "[ 🦜 Natural Extended ] Character object:",
                     freshContext.characters[chid]
+                );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] Current characterId:",
+                    freshContext.characterId
+                );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] Current name2:",
+                    freshContext.name2
                 );
                 
                 freshContext.generate(
