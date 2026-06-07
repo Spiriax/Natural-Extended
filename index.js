@@ -552,6 +552,16 @@ jQuery(() => {
                 }
                 
                 console.log(
+                    "[ 🦜 Natural Extended ] selected_group:",
+                    freshContext.groupId
+                );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] characterId:",
+                    freshContext.characterId
+                );
+                
+                console.log(
                     "[ 🦜 Natural Extended ] Generating:",
                     characterName,
                     chid
@@ -583,12 +593,16 @@ jQuery(() => {
                     characterName
                 );
 
-                freshContext.setCharacterId(
-                    chid
-                );
-                
+                freshContext.characterId =
+                    String(chid);
+                    
                 freshContext.setCharacterName(
                     characterName
+                );
+                
+                console.log(
+                    "[ 🦜 Natural Extended ] characterId after set:",
+                    freshContext.characterId
                 );
                 
                 freshContext.generate(
