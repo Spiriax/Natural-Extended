@@ -314,6 +314,11 @@ jQuery(() => {
             );
             
             console.log(
+                "[Natural Extended] Last 3 messages:",
+                freshContext.chat.slice(-3)
+            );
+            
+            console.log(
                 "[Natural Extended] Last message is_user:",
                 freshContext.chat[
                     freshContext.chat.length - 1
