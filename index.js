@@ -314,6 +314,24 @@ jQuery(() => {
                     freshContext.chat.length - 1
                 ]?.is_user
             );
+            
+            console.log(
+                "[Natural Extended] Last message name:",
+                lastMessage?.name
+            );
+            
+            if (!lastMessage?.is_user) {
+                console.log(
+                    "[Natural Extended] Ignoring non-user message"
+                );
+            
+                return;
+            }
+            
+            console.log(
+                "[Natural Extended] Last message id:",
+                freshContext.chat.length - 1
+            );
                 
             const lastMessage =
                 freshContext.chat[
