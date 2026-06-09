@@ -295,6 +295,11 @@ jQuery(() => {
             
             const freshContext =
                 SillyTavern.getContext();
+                
+            const lastMessage =
+                freshContext.chat[
+                    freshContext.chat.length - 1
+                ];
             
             console.log(
                 "[Natural Extended] Chat length:",
@@ -332,12 +337,7 @@ jQuery(() => {
                 "[Natural Extended] Last message id:",
                 freshContext.chat.length - 1
             );
-                
-            const lastMessage =
-                freshContext.chat[
-                    freshContext.chat.length - 1
-                ];
-    
+                    
             const matchedCharacters = [];
     
             const characters =
