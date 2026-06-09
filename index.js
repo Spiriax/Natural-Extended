@@ -621,24 +621,12 @@ jQuery(() => {
                     freshContext.getCharacters
                 );
                                                     
-                console.log(
-                    "[Natural Extended] Before selectCharacterById"
-                );
-                
-                await freshContext.selectCharacterById(
-                    chid
-                );
-                
-                console.log(
-                    "[Natural Extended] After selectCharacterById"
-                );
-                
                 freshContext.generate(
                     "normal",
                     {
                         force_chid: chid
                     }
-                );
+                );  
                 
                 console.log(
                     "[ 🦜 Natural Extended ] Generate called",
