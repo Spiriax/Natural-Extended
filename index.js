@@ -288,6 +288,30 @@ jQuery(() => {
         context.eventTypes.MESSAGE_SENT,
         () => {
     
+            console.log(
+                "[Natural Extended] EVENT",
+                Date.now()
+            );
+            
+            console.log(
+                "[Natural Extended] Chat length:",
+                freshContext.chat.length
+            );
+            
+            console.log(
+                "[Natural Extended] Last message:",
+                freshContext.chat[
+                    freshContext.chat.length - 1
+                ]
+            );
+            
+            console.log(
+                "[Natural Extended] Last message is_user:",
+                freshContext.chat[
+                    freshContext.chat.length - 1
+                ]?.is_user
+            );
+            
             const freshContext =
                 SillyTavern.getContext();
     
