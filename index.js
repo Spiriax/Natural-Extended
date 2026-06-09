@@ -293,6 +293,9 @@ jQuery(() => {
                 Date.now()
             );
             
+            const freshContext =
+                SillyTavern.getContext();
+            
             console.log(
                 "[Natural Extended] Chat length:",
                 freshContext.chat.length
@@ -311,10 +314,7 @@ jQuery(() => {
                     freshContext.chat.length - 1
                 ]?.is_user
             );
-            
-            const freshContext =
-                SillyTavern.getContext();
-    
+                
             const lastMessage =
                 freshContext.chat[
                     freshContext.chat.length - 1
