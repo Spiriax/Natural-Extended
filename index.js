@@ -667,14 +667,22 @@ jQuery(() => {
                     "[ 🦜 Natural Extended ] getCharacters function:",
                     freshContext.getCharacters
                 );
+
+                console.log(
+                    "[Natural Extended] About to call ST Generate",
+                    chid
+                );
+
+                console.log(
+                    "[Natural Extended] ST Generate returned"
+                );
                                                     
-                //
-                // freshContext.generate(
-                //    "normal",
-                //    {
-                //        force_chid: chid
-                //    }
-                // );
+                Generate(
+                    "normal",
+                    {
+                        force_chid: chid
+                    }
+                );
 
                 console.log(
                     "[Natural Extended] Would trigger Siri"
