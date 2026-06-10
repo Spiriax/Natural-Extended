@@ -286,7 +286,7 @@ jQuery(() => {
     
     context.eventSource.on(
         context.eventTypes.MESSAGE_SENT,
-        () => {
+        async () => {
     
             console.log(
                 "[Natural Extended] EVENT",
@@ -672,11 +672,7 @@ jQuery(() => {
                     "[Natural Extended] About to call ST Generate",
                     chid
                 );
-
-                console.log(
-                    "[Natural Extended] ST Generate returned"
-                );
-                                                    
+                                 
                 try {
                     console.log(
                         "[Natural Extended] Triggering",
@@ -690,6 +686,11 @@ jQuery(() => {
                         }
                     );
                 }
+
+                console.log(
+                    "[Natural Extended] ST Generate returned"
+                );
+
                 catch (error) {
                     console.error(
                         "[Natural Extended] Generate failed",
