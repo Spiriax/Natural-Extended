@@ -677,12 +677,25 @@ jQuery(() => {
                     "[Natural Extended] ST Generate returned"
                 );
                                                     
-                Generate(
-                    "normal",
-                    {
-                        force_chid: chid
-                    }
-                );
+                try {
+                    console.log(
+                        "[Natural Extended] Triggering",
+                        chid
+                    );
+
+                    await freshContext.generate(
+                        "normal",
+                        {
+                            force_chid: chid
+                        }
+                    );
+                }
+                catch (error) {
+                    console.error(
+                        "[Natural Extended] Generate failed",
+                        error
+                    );
+                }
 
                 console.log(
                     "[Natural Extended] Would trigger Siri"
