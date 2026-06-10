@@ -685,11 +685,17 @@ jQuery(() => {
                             force_chid: chid
                         }
                     );
-                }
 
-                console.log(
-                    "[Natural Extended] ST Generate returned"
-                );
+                    console.log(
+                        "[Natural Extended] ST Generate returned"
+                    );
+                }
+                catch (error) {
+                    console.error(
+                        "[Natural Extended] Generate failed",
+                        error
+                    );
+                }
 
                 catch (error) {
                     console.error(
