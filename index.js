@@ -300,6 +300,18 @@ jQuery(() => {
                 freshContext.chat[
                     freshContext.chat.length - 1
                 ];
+
+            if (
+                !naturalExtendedSettings[
+                    freshContext.groupId
+                ]
+            ) {
+                console.log(
+                    "[Natural Extended] No settings for group"
+                );
+
+                return;
+            }
             
             console.log(
                 "[Natural Extended] Chat length:",
