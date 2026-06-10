@@ -673,7 +673,7 @@ jQuery(() => {
                     {
                         force_chid: chid
                     }
-                );  
+                );
                 
                 console.log(
                     "[ 🦜 Natural Extended ] Generate called",
