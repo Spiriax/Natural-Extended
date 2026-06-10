@@ -685,21 +685,21 @@ jQuery(() => {
                     chid
                 );
 
+                const character =
+                    freshContext.characters[chid];
+                
                 try {
-                    await freshContext.generate(
-                        "normal",
-                        {
-                            force_chid: chid
-                        }
+                    await freshContext.executeSlashCommands(
+                        `/trigger "${character.name}"`
                     );
 
                     console.log(
-                        "[Natural Extended] Generate finished"
+                        "[Natural Extended] Trigger finished"
                     );
                 }
                 catch (error) {
                     console.error(
-                        "[Natural Extended] Generate failed",
+                        "[Natural Extended] Trigger failed",
                         error
                     );
                 }
