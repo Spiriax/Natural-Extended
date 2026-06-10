@@ -668,11 +668,16 @@ jQuery(() => {
                     freshContext.getCharacters
                 );
                                                     
-                freshContext.generate(
-                    "normal",
-                    {
-                        force_chid: chid
-                    }
+                //
+                // freshContext.generate(
+                //    "normal",
+                //    {
+                //        force_chid: chid
+                //    }
+                // );
+
+                console.log(
+                    "[Natural Extended] Would trigger Siri"
                 );
                 
                 console.log(
