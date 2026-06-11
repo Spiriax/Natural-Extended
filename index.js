@@ -7,11 +7,6 @@ jQuery(() => {
     // (characters, chat ID, group ID, and so on...)
     const context = SillyTavern.getContext();
     
-    // TEMP
-    console.log(
-        freshContext.eventTypes
-    );
-    
     // Show or hide the extension panel whenever the user switches chat.
     context.eventSource.on(
         context.eventTypes.CHAT_CHANGED,
@@ -246,6 +241,11 @@ jQuery(() => {
 
             const freshContext =
                 SillyTavern.getContext();
+
+            // TEMP
+            console.log(
+                freshContext.eventTypes
+            );
 
             // TEMP
             console.log(
