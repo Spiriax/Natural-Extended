@@ -1,41 +1,32 @@
 const naturalExtendedSettings = {};
 
 jQuery(() => {
-    console.log("Natural Extended loaded");
+    console.log("[ 🦜 Natural Extended ] Loaded successfully!");
     
+    // Get access to SillyTavern's current context
+    // (characters, chat ID, group ID, and so on...)
     const context = SillyTavern.getContext();
     
+    // Show or hide the extension panel whenever the user switches chat.
     context.eventSource.on(
         context.eventTypes.CHAT_CHANGED,
         
         () => {
-            console.log(
-                "[ 🦜 Natural Extended ] Detected chat change! 💬"
-            );
     
             const freshContext =
                 SillyTavern.getContext();
-                
-            console.log(
-                "[ 🦜 Natural Extended ] Context:",
-                freshContext
-            );
                 
             const extensionPanel =
                 document.getElementById(
                     "natural-extended-panel"
                 );    
     
+            // Extension only works in group chats.    
             if (!freshContext.groupId) {
 
                 if (extensionPanel) {
                     extensionPanel.style.display = "none";
                 }
-            
-                console.log(
-                    "[ 🦜 Natural Extended ] ❌ Single chat detected!❌"
-                );
-            
                 return;
             }    
             
@@ -43,17 +34,21 @@ jQuery(() => {
                 extensionPanel.style.display = "block";
             }
             
+            // Find the currently open group.
             const currentGroup =
                 freshContext.groups.find(
                     g =>
                         String(g.id) ===
                         String(freshContext.groupId)
                 );
-                
+            
+            // Safety check. Abort if the currently selected group
+            // cannot be found in SillyTavern's group list.    
             if (!currentGroup) {
                 return;
             }
     
+            // Get all characters that belong to the currently open group.
             const groupCharacters =
                 freshContext.characters.filter(
                     character =>
@@ -61,56 +56,61 @@ jQuery(() => {
                             character.avatar
                         )
                 );
-                
-            if (!naturalExtendedSettings[freshContext.groupId]) {
-
+            
+            // Create default settings for this group
+            // the first time it is opened.    
+            if (
+                !naturalExtendedSettings[
+                    freshContext.groupId
+                ]
+            ) {
                 naturalExtendedSettings[
                     freshContext.groupId
                 ] = {
-
                     enabled: false,
-                    
                     everyoneWords: "",
-                    
                     maxTriggeredCharacters: 0,
-                    
                     characters: {}
-
                 };
-
             }
+
+            const groupSettings =
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ];
             
+            // Keep character list sorted alphabetically.
             groupCharacters.sort(
                 (a, b) =>
                     a.name.localeCompare(b.name)
             );
-                
+            
+            // Build the UI for all group members.
             renderCharacterSections(
                 groupCharacters
             );
             
+            // Load saved settings into the UI and connect input events.
             groupCharacters.forEach(character => {
 
+                // Create default settings for new characters.
                 if (
-                    !naturalExtendedSettings[
-                        freshContext.groupId
-                    ].characters[
+                    !groupSettings.characters[
                         character.name
                     ]
                 ) {
-            
-                    naturalExtendedSettings[
-                        freshContext.groupId
-                    ].characters[
+                    groupSettings.characters[
                         character.name
                     ] = {
-            
                         respond: "",
                         ignore: ""
-            
                     };
-            
                 }
+
+                const characterSettings =
+                    groupSettings.characters[
+                        character.name
+                    ];
             
                 const respondInput =
                     document.getElementById(
@@ -123,75 +123,60 @@ jQuery(() => {
                     );
             
                 respondInput.value =
-                    naturalExtendedSettings[
-                        freshContext.groupId
-                    ].characters[
-                        character.name
-                    ].respond;
-            
+                    characterSettings.respond;
+
                 ignoreInput.value =
-                    naturalExtendedSettings[
-                        freshContext.groupId
-                    ].characters[
-                        character.name
-                    ].ignore;
+                    characterSettings.ignore;
             
+                // Save changes immediately when the user types.
                 respondInput.oninput = () => {
-            
-                    naturalExtendedSettings[
-                        freshContext.groupId
-                    ].characters[
-                        character.name
-                    ].respond =
+
+                    characterSettings.respond =
                         respondInput.value;
-            
                 };
             
                 ignoreInput.oninput = () => {
-            
-                    naturalExtendedSettings[
-                        freshContext.groupId
-                    ].characters[
-                        character.name
-                    ].ignore =
+
+                    characterSettings.ignore =
                         ignoreInput.value;
-            
+
                 };
-            
             });
             
+            // Enable or disable Natural Extended for this group.
             const enableCheckbox =
                 document.getElementById(
                     "ne-enabled"
                 );
             
             enableCheckbox.checked =
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].enabled;
+                groupSettings.enabled;
                 
             const settingsContent =
                 document.getElementById(
                     "ne-settings-content"
                 );
             
-            settingsContent.style.display =
-                enableCheckbox.checked
-                    ? "block"
-                    : "none";
-            
-            enableCheckbox.onchange = () => {
-            
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].enabled =
-                    enableCheckbox.checked;
-                    
+            // Show settings when enabled, hide them when disabled.    
+            function updateSettingsVisibility() {
+
                 settingsContent.style.display =
                     enableCheckbox.checked
                         ? "block"
                         : "none";
+            }
+
+            updateSettingsVisibility();
             
+            enableCheckbox.onchange = () => {
+            
+                groupSettings.enabled =
+                    enableCheckbox.checked;
+                
+                updateSettingsVisibility();
+                
+                // Force SillyTavern into Manual mode.
+                // Natural Extended controls who gets triggered.
                 if (enableCheckbox.checked) {
     
                     const strategySelect =
@@ -201,171 +186,93 @@ jQuery(() => {
                 
                     if (strategySelect) {
                 
+                        // Group reply strategy 2 = Manual mode.
                         strategySelect.value = "2";
                 
                         strategySelect.dispatchEvent(
                             new Event("change")
                         );
-                
                     }
-                    
                 }
-            
-                console.log(
-                    "[ 🦜 Natural Extended ] Enabled:",
-                    enableCheckbox.checked
-                );
-            
             };
             
+            // Words that should trigger all characters.
             const everyoneInput =
                 document.getElementById(
                     "ne-everyone"
                 );
-            
+
             everyoneInput.value =
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].everyoneWords;
-            
+                groupSettings.everyoneWords;
+
             everyoneInput.oninput = () => {
-            
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].everyoneWords =
+
+                groupSettings.everyoneWords =
                     everyoneInput.value;
-            
-                console.log(
-                    "[ 🦜 Natural Extended ] Trigger All words:",
-                    everyoneInput.value
-                );
-            
             };
-            
+
+            // Maximum number of characters that can be
+            // triggered by one message.
             const maxInput =
                 document.getElementById(
                     "ne-max-mentions"
                 );
-            
+
             maxInput.value =
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].maxTriggeredCharacters;
-            
+                groupSettings.maxTriggeredCharacters;
+
             maxInput.oninput = () => {
-            
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].maxTriggeredCharacters =
+
+                groupSettings.maxTriggeredCharacters =
                     Number(maxInput.value);
-            
-                console.log(
-                    "[ 🦜 Natural Extended ] Max Triggered Characters:",
-                    maxInput.value
-                );
-            
             };
-                    
-                console.log(
-                    naturalExtendedSettings
-                );
-    
+
             console.log(
-                "[Natural Extended]",
-                {
-                    groupId: freshContext.groupId,
-                    groupName: currentGroup.name,
-                    members: currentGroup.members,
-                    characters: groupCharacters.map(
-                        c => c.name
-                    )
-                }
-            );  
+                "[Natural Extended] Settings:",
+                naturalExtendedSettings
+            );
         }
     );     
     
+    // Listen for new user messages.
     context.eventSource.on(
         context.eventTypes.MESSAGE_SENT,
         async () => {
-    
-            console.log(
-                "[Natural Extended] EVENT",
-                Date.now()
-            );
-            
+
             const freshContext =
                 SillyTavern.getContext();
-                
+
             const lastMessage =
                 freshContext.chat[
                     freshContext.chat.length - 1
                 ];
 
-            if (
-                !naturalExtendedSettings[
+            const groupSettings =
+                naturalExtendedSettings[
                     freshContext.groupId
-                ]
-            ) {
-                console.log(
-                    "[Natural Extended] No settings for group"
-                );
+                ];
 
+            if (!groupSettings) {
                 return;
             }
-            
-            console.log(
-                "[Natural Extended] Chat length:",
-                freshContext.chat.length
-            );
-            
-            console.log(
-                "[Natural Extended] Last message:",
-                freshContext.chat[
-                    freshContext.chat.length - 1
-                ]
-            );
-            
-            console.log(
-                "[Natural Extended] Last 3 messages:",
-                freshContext.chat.slice(-3)
-            );
-            
-            console.log(
-                "[Natural Extended] Last message is_user:",
-                freshContext.chat[
-                    freshContext.chat.length - 1
-                ]?.is_user
-            );
-            
-            console.log(
-                "[Natural Extended] Last message name:",
-                lastMessage?.name
-            );
-            
+
+            // Ignore messages generated by characters.
+            // We only want to react to actual user input.
             if (!lastMessage?.is_user) {
-                console.log(
-                    "[Natural Extended] Ignoring non-user message"
-                );
-            
                 return;
             }
-            
-            console.log(
-                "[Natural Extended] Last message id:",
-                freshContext.chat.length - 1
-            );
+
+            const messageText =
+                lastMessage.mes
+                    .toLowerCase();
                     
             const matchedCharacters = [];
     
             const characters =
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].characters;
+                groupSettings.characters;
                 
             const everyoneWords =
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].everyoneWords
+                groupSettings.everyoneWords
                     .split(",");
             
             let everyoneTriggered =
@@ -395,16 +302,14 @@ jQuery(() => {
             
                     everyoneTriggered =
                         true;
-            
+                    
                     console.log(
                         "[ 🦜 Natural Extended ] Everyone triggered by:",
                         cleanWord
                     );
-            
+                    
                     break;
-            
                 }
-            
             }
             
             for (
@@ -416,127 +321,118 @@ jQuery(() => {
                     everyoneTriggered
                 ) {
             
+                    // -1 means this character was triggered by an
+                    // "everyone" keyword rather than a direct mention.
                     matchedCharacters.push({
                         characterName,
                         position: -1
                     });
             
-                    console.log(
-                        "[ 🦜 Natural Extended ]",
-                        characterName,
-                        "forced by everyone trigger"
-                    );
-            
                     continue;
-            
                 }
                                 
+                const characterSettings =
+                    characters[
+                        characterName
+                    ];
+
                 const respondWords =
-                    characters[
-                        characterName
-                    ].respond
+                    characterSettings.respond
                         .split(",");
-                        
+
                 const ignoreWords =
-                    characters[
-                        characterName
-                    ].ignore
+                    characterSettings.ignore
                         .split(",");
-                
+
                 let shouldIgnore =
                     false;
-                
+
+                // Check ignore words first.
+                // If one matches, this character is skipped.
                 for (
                     const ignoreWord
                     of ignoreWords
                 ) {
-                
+
                     const cleanIgnoreWord =
                         ignoreWord
                             .trim()
                             .toLowerCase();
-                
+
                     if (!cleanIgnoreWord) {
                         continue;
                     }
-                
+
                     if (
-                        lastMessage.mes
-                            .toLowerCase()
-                            .includes(
-                                cleanIgnoreWord
-                            )
+                        messageText.includes(
+                            cleanIgnoreWord
+                        )
                     ) {
-                
+
                         shouldIgnore =
                             true;
-                
+
                         console.log(
                             "[ 🦜 Natural Extended ]",
                             characterName,
                             "ignored by:",
                             cleanIgnoreWord
                         );
-                
+
                         break;
-                
                     }
-                
                 }
-                
+
                 if (shouldIgnore) {
                     continue;
                 }
-            
+
                 for (
                     const word
                     of respondWords
                 ) {
-            
+
+                    // Look for trigger words that should
+                    // make this character respond.
                     const cleanWord =
                         word
                             .trim()
                             .toLowerCase();
-                    
+
                     if (!cleanWord) {
                         continue;
                     }
-                    
+
                     if (
-                        lastMessage.mes
-                            .toLowerCase()
-                            .includes(
-                                cleanWord
-                            )
+                        messageText.includes(
+                            cleanWord
+                        )
                     ) {
-            
+
+                        // Position is used later to preserve
+                        // mention order in the user's message.
                         matchedCharacters.push({
                             characterName,
                             position:
-                                lastMessage.mes
-                                    .toLowerCase()
-                                    .indexOf(cleanWord)
-                        });      
-      
+                                messageText.indexOf(
+                                    cleanWord
+                                )
+                        });
+
                         console.log(
                             "[ 🦜 Natural Extended ]",
                             characterName,
                             "detected by:",
                             cleanWord
-                        );            
-                        
+                        );
+
                         break;
-            
                     }
-            
-                }
-            
-            }         
-            
+                }       
+            }
+
             const maxTriggered =
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ].maxTriggeredCharacters;
+                groupSettings.maxTriggeredCharacters;
                 
             matchedCharacters.sort(
                 (a, b) =>
@@ -558,24 +454,11 @@ jQuery(() => {
                 triggeredCharacters.splice(
                     maxTriggered
                 );
-            
             }
-   
-            console.log(
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ]
-            );
     
             console.log(
                 "[ 🦜 Natural Extended ] Triggered:",
                 triggeredCharacters
-            );
-            
-            console.log(
-                "[ 🦜 Natural Extended ] All Characters:",
-                SillyTavern.getContext()
-                    .characters
             );
             
             if (
@@ -596,11 +479,6 @@ jQuery(() => {
                             === characterName
                     );
                     
-                console.log(
-                    "[ 🦜 Natural Extended ] Target character:",
-                    freshContext.characters[chid]
-                );
-                    
                 if (chid === -1) {
                     console.error(
                         "[Natural Extended] Character not found:",
@@ -610,107 +488,40 @@ jQuery(() => {
                     continue;
                 }
                 
-                console.log(
-                    "[ 🦜 Natural Extended ] selected_group:",
-                    freshContext.groupId
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] characterId:",
-                    freshContext.characterId
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] Generating:",
-                    characterName,
-                    chid
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] Character object:",
-                    freshContext.characters[chid]
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] Current characterId:",
-                    freshContext.characterId
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] Current name2:",
-                    freshContext.name2
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] Available context keys:",
-                    Object.keys(freshContext)
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] Setting character:",
-                    chid,
-                    characterName
-                );
-
-                freshContext.characterId =
-                    String(chid);
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] characterId after set:",
-                    freshContext.characterId
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] selected_group:",
-                    freshContext.groupId
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] characterId:",
-                    freshContext.characterId
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] getCurrentChatId():",
-                    freshContext.getCurrentChatId()
-                );
-                
-                console.log(
-                    "[ 🦜 Natural Extended ] getCharacters function:",
-                    freshContext.getCharacters
-                );
-
-                console.log(
-                    "[Natural Extended] Triggering",
-                    chid
-                );
-
+                // Trigger the same command as SillyTavern's
+                // "speech bubble" button.
                 const character =
                     freshContext.characters[chid];
-                
+
+                /*
+                * Do not use freshContext.generate(), Generate() or 
+                * force_chid as these approaches cause duplicated messages,
+                * broken group state and recursive generation.
+                *
+                * Using SillyTavern's built-in /trigger command works
+                * correctly with group chat logic.
+                */
+
                 try {
                     await freshContext.executeSlashCommands(
                         `/trigger "${character.name}"`
                     );
-
-                    console.log(
-                        "[Natural Extended] Trigger finished"
-                    );
                 }
+
                 catch (error) {
                     console.error(
                         "[Natural Extended] Trigger failed",
                         error
                     );
                 }
-     
             }
-    
         }
     );    
         
     const panels = document.querySelectorAll('.inline-drawer-content');
 
+    // Inject the extension into SillyTavern's
+    // Group Settings drawer panel, which just happens to be panel 16.
     const panel = panels[16];
        
     if (!panel) {
@@ -718,8 +529,15 @@ jQuery(() => {
         return;
     }
 
-    const div = document.createElement('div');
-
+    const extensionRoot =
+        document.createElement('div');
+    
+    extensionRoot.innerHTML = `...`;
+    
+    panel.appendChild(
+        extensionRoot
+    );
+                
     div.innerHTML = `
     <div id="natural-extended-panel" style="margin-top:10px;">
 
@@ -785,7 +603,11 @@ jQuery(() => {
     </div>
     `;
         
-    function renderCharacterSections(groupCharacters) {
+    // Build the Respond/Ignore UI
+    // for every character in the group.
+    function renderCharacterSections(
+        groupCharacters
+    ) {
 
         const characterContainer =
             document.getElementById(
@@ -847,13 +669,17 @@ jQuery(() => {
     if (extensionPanel) {
         extensionPanel.style.display = "none";
     }
-        
-    console.log("Natural Extended injected");
 });
 
-// TODO:
-// Add Continue-toggle which makes conversational lock.
-// Add Word Count-function to Continue function so it only checks for new trigger within X words.
-// Add some functionality to Talkativeness.
-// Only show Natural Extended inside actual group chats.
-// Current implementation injects into panel[16].
+/*
+* NOTE:
+* Currently injects into panel[16].
+* If SillyTavern changes its UI this may break.
+*
+* TODO:
+* - Add Continue-toggle which makes conversational lock.
+* - Add Word Count-function to Continue function so
+* it only checks for new trigger within X words.
+* - Add some functionality to Talkativeness.
+* - Only show Natural Extended inside actual group chats.
+*/
