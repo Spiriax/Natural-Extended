@@ -7,6 +7,11 @@ jQuery(() => {
     // (characters, chat ID, group ID, and so on...)
     const context = SillyTavern.getContext();
     
+    // TEMP
+    console.log(
+        freshContext.eventTypes
+    );
+    
     // Show or hide the extension panel whenever the user switches chat.
     context.eventSource.on(
         context.eventTypes.CHAT_CHANGED,
@@ -241,6 +246,18 @@ jQuery(() => {
 
             const freshContext =
                 SillyTavern.getContext();
+
+            // TEMP
+            console.log(
+                "[Natural Extended] streamingProcessor:",
+                freshContext.streamingProcessor
+            );
+
+            // TEMP
+            console.log(
+                "[Natural Extended] stopGeneration:",
+                freshContext.stopGeneration
+            );
 
             const lastMessage =
                 freshContext.chat[
@@ -502,23 +519,12 @@ jQuery(() => {
                 * correctly with group chat logic.
                 */
 
-                // TEMP
-                console.log(
-                    "Triggering:",
-                    character.name
-                );
-
                 try {
                     await freshContext.executeSlashCommands(
                         `/trigger "${character.name}"`
                     );
-
-                    // TEMP
-                    console.log(
-                        "Finished:",
-                        character.name
-                    );
                 }
+
                 catch (error) {
                     console.error(
                         "[Natural Extended] Trigger failed",
