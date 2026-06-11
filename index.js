@@ -502,11 +502,23 @@ jQuery(() => {
                 * correctly with group chat logic.
                 */
 
+                // TEMP
+                console.log(
+                    "Triggering:",
+                    character.name
+                );
+
                 try {
                     await freshContext.executeSlashCommands(
                         `/trigger "${character.name}"`
                     );
                 }
+
+                // TEMP
+                console.log(
+                    "Finished:",
+                    character.name
+                );
 
                 catch (error) {
                     console.error(
