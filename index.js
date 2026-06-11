@@ -265,7 +265,7 @@ jQuery(() => {
             );
 
             const lastMessage =
-                freshContext.chat[§
+                freshContext.chat[
                     freshContext.chat.length - 1
                 ];
 
