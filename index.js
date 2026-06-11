@@ -12,6 +12,46 @@ jQuery(() => {
         Object.keys(context.eventTypes)
     );
 
+    // TEMP
+    context.eventSource.on(
+        context.eventTypes.GENERATION_STARTED,
+        () => {
+            console.log(
+                "[Natural Extended] GENERATION_STARTED"
+            );
+        }
+    );
+
+    // TEMP
+    context.eventSource.on(
+        context.eventTypes.GENERATION_ENDED,
+        () => {
+            console.log(
+                "[Natural Extended] GENERATION_ENDED"
+            );
+        }
+    );
+
+    // TEMP
+    context.eventSource.on(
+        context.eventTypes.MESSAGE_RECEIVED,
+        () => {
+            console.log(
+                "[Natural Extended] MESSAGE_RECEIVED"
+            );
+        }
+    );
+
+    // TEMP
+    context.eventSource.on(
+        context.eventTypes.CHARACTER_MESSAGE_RENDERED,
+        () => {
+            console.log(
+                "[Natural Extended] CHARACTER_MESSAGE_RENDERED"
+            );
+        }
+    );
+
     // Show or hide the extension panel whenever the user switches chat.
     context.eventSource.on(
         context.eventTypes.CHAT_CHANGED,
