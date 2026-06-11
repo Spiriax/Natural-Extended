@@ -512,14 +512,13 @@ jQuery(() => {
                     await freshContext.executeSlashCommands(
                         `/trigger "${character.name}"`
                     );
+
+                    // TEMP
+                    console.log(
+                        "Finished:",
+                        character.name
+                    );
                 }
-
-                // TEMP
-                console.log(
-                    "Finished:",
-                    character.name
-                );
-
                 catch (error) {
                     console.error(
                         "[Natural Extended] Trigger failed",
@@ -668,10 +667,6 @@ jQuery(() => {
             `;
         });
     }
-    
-    panel.appendChild(
-        extensionRoot
-    );
     
     const extensionPanel =
         document.getElementById(
