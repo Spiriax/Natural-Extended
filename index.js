@@ -531,14 +531,8 @@ jQuery(() => {
 
     const extensionRoot =
         document.createElement('div');
-    
-    extensionRoot.innerHTML = `...`;
-    
-    panel.appendChild(
-        extensionRoot
-    );
-                
-    div.innerHTML = `
+
+    extensionRoot.innerHTML = `
     <div id="natural-extended-panel" style="margin-top:10px;">
 
         <div
@@ -559,49 +553,53 @@ jQuery(() => {
         
         <div id="ne-settings-content">
 
-        <p style="opacity:0.7; margin-top:5px;">
-            Group Reply Strategy will automatically be set to Manual while Natural Extended is enabled.
-        </p>
+            <p style="opacity:0.7; margin-top:5px;">
+                Group Reply Strategy will automatically be set to Manual while Natural Extended is enabled.
+            </p>
 
-        <hr>
-        
-        <div id="ne-character-container"></div>
-                
-        <hr>
+            <hr>
+            
+            <div id="ne-character-container"></div>
+                    
+            <hr>
 
-        <div style="margin-top:10px;">
-            <label>
-                Words that make every character respond
-            </label>
-            <br>
-            <input
-                type="text"
-                id="ne-everyone"
-                class="text_pole flex1"
-            />
+            <div style="margin-top:10px;">
+                <label>
+                    Words that make every character respond
+                </label>
+                <br>
+                <input
+                    type="text"
+                    id="ne-everyone"
+                    class="text_pole flex1"
+                />
+            </div>
+
+            <hr>
+
+            <div style="margin-top:10px;">
+                <label>
+                    Maximum Triggered Characters
+                </label>
+                <br>
+                <input
+                    type="number"
+                    id="ne-max-mentions"
+                    min="0"
+                    value="0"
+                    class="text_pole"
+                    style="width:60px;"
+                >
+            </div>
+
         </div>
-
-        <hr>
-
-        <div style="margin-top:10px;">
-            <label>
-                Maximum Triggered Characters
-            </label>
-            <br>
-            <input
-                type="number"
-                id="ne-max-mentions"
-                min="0"
-                value="0"
-                class="text_pole"
-                style="width:60px;"
-            >
-        </div>
-
-    </div>
 
     </div>
     `;
+
+    panel.appendChild(
+        extensionRoot
+    );
         
     // Build the Respond/Ignore UI
     // for every character in the group.
@@ -659,7 +657,9 @@ jQuery(() => {
         });
     }
     
-    panel.appendChild(div);
+    panel.appendChild(
+        extensionRoot
+    );
     
     const extensionPanel =
         document.getElementById(
