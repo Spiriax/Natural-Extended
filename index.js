@@ -230,7 +230,7 @@ jQuery(() => {
             };
 
             console.log(
-                "[Natural Extended] Settings:",
+                "[ 🦜 Natural Extended ] Settings:",
                 naturalExtendedSettings
             );
         }
@@ -489,7 +489,7 @@ jQuery(() => {
                     
                 if (chid === -1) {
                     console.error(
-                        "[Natural Extended] Character not found:",
+                        "[ 🦜 Natural Extended ] Character not found:",
                         characterName
                     );
 
@@ -518,13 +518,12 @@ jQuery(() => {
 
                 catch (error) {
                     console.error(
-                        "[Natural Extended] Trigger failed",
+                        "[ 🦜 Natural Extended ] Trigger failed",
                         error
                     );
                 }
-            }
         }
-    );    
+    );
         
     const panels = document.querySelectorAll('.inline-drawer-content');
 
