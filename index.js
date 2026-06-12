@@ -492,8 +492,8 @@ jQuery(() => {
                         "[Natural Extended] Character not found:",
                         characterName
                     );
-                    
-                    continue;
+
+                    return;
                 }
                 
                 // Trigger the same command as SillyTavern's
