@@ -31,22 +31,30 @@ jQuery(() => {
                         String(freshContext.groupId)
                 );
 
-            const extensionPanel =
-                document.getElementById(
-                    "natural-extended-panel"
-                );
-
-            if (extensionPanel) {
-
-                extensionPanel.style.display =
-                    "none";
-
-                console.log(
-                    "[ 🦜 Natural Extended ] Panel hidden"
-                );
-
+            if (!currentGroup) {
+                return;
             }
 
+            const groupCharacters =
+                freshContext.characters.filter(
+                    character =>
+                        currentGroup.members.includes(
+                            character.avatar
+                        )
+                );
+
+            groupCharacters.sort(
+                (a, b) =>
+                    a.name.localeCompare(b.name)
+            );
+
+            renderCharacterSections(
+                groupCharacters
+            );
+
+            console.log(
+                "[ 🦜 Natural Extended ] Character list refreshed"
+            );
         }
     );
 
