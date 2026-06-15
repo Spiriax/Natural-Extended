@@ -18,6 +18,15 @@ jQuery(() => {
                 "[ 🦜 Natural Extended ] GENERATION_ENDED"
             );
 
+            if (!triggerQueue.length) {
+                return;
+            }
+
+            console.log(
+                "[ 🦜 Natural Extended ] Next in queue:",
+                triggerQueue[0]
+            );
+
         }
     );
 
