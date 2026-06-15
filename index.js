@@ -22,9 +22,12 @@ jQuery(() => {
                 return;
             }
 
+            const nextCharacter =
+                triggerQueue.shift();
+
             console.log(
-                "[ 🦜 Natural Extended ] Next in queue:",
-                triggerQueue[0]
+                "[ 🦜 Natural Extended ] Triggering from queue:",
+                nextCharacter
             );
 
         }
