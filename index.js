@@ -9,6 +9,18 @@ jQuery(() => {
     // (characters, chat ID, group ID, and so on...)
     const context = SillyTavern.getContext();
 
+    // TEMP
+    context.eventSource.on(
+        context.eventTypes.GENERATION_ENDED,
+        () => {
+
+            console.log(
+                "[ 🦜 Natural Extended ] GENERATION_ENDED"
+            );
+
+        }
+    );
+
     // Show or hide the extension panel whenever the user switches chat.
     context.eventSource.on(
         context.eventTypes.CHAT_CHANGED,
@@ -17,6 +29,7 @@ jQuery(() => {
     
             const freshContext =
                 SillyTavern.getContext();
+
                 
             const extensionPanel =
                 document.getElementById(
@@ -472,13 +485,13 @@ jQuery(() => {
             triggerQueue =
                 [...triggeredCharacters];
 
+            const characterName =
+                triggerQueue.shift();
+
             console.log(
                 "[ 🦜 Natural Extended ] Queue:",
                 triggerQueue
             );
-
-            const characterName =
-                triggerQueue.shift();
             
                 const chid =
                     freshContext.characters.findIndex(
