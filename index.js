@@ -25,6 +25,12 @@ jQuery(() => {
                 "[ 🦜 Natural Extended ] GROUP_UPDATED"
             );
 
+            console.log(
+                "[ 🦜 Natural Extended ] Characters:",
+                SillyTavern.getContext()
+                    .characters.length
+            );
+
         }
     );
 
