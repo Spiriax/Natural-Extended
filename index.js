@@ -3,6 +3,7 @@ import {
 } from '../../../extensions.js';
 
 console.log(
+    "[ 🦜 Natural Extended ] extension_settings:",
     extension_settings
 );
 
