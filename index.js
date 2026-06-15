@@ -23,8 +23,6 @@ if (
 const naturalExtendedSettings =
     extension_settings[MODULE];
 
-const naturalExtendedSettings = {};
-
 /*
  * SillyTavern's /trigger command cannot reliably trigger
  * multiple group members simultaneously.
