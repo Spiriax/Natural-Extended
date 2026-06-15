@@ -242,6 +242,8 @@ jQuery(() => {
 
                     characterSettings.respond =
                         respondInput.value;
+
+                    saveSettingsDebounced();    
                 };
             
                 ignoreInput.oninput = () => {
@@ -249,6 +251,7 @@ jQuery(() => {
                     characterSettings.ignore =
                         ignoreInput.value;
 
+                    saveSettingsDebounced();
                 };
             });
             
@@ -320,6 +323,8 @@ jQuery(() => {
 
                 groupSettings.everyoneWords =
                     everyoneInput.value;
+            
+                saveSettingsDebounced();
             };
 
             // Maximum number of characters that can be
@@ -336,6 +341,8 @@ jQuery(() => {
 
                 groupSettings.maxTriggeredCharacters =
                     Number(maxInput.value);
+            
+                saveSettingsDebounced();
             };
 
             console.log(
