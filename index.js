@@ -21,14 +21,19 @@ jQuery(() => {
         context.eventTypes.GROUP_UPDATED,
         () => {
 
-            console.log(
-                "[ 🦜 Natural Extended ] GROUP_UPDATED"
-            );
+            const freshContext =
+                SillyTavern.getContext();
+
+            const currentGroup =
+                freshContext.groups.find(
+                    g =>
+                        String(g.id) ===
+                        String(freshContext.groupId)
+                );
 
             console.log(
-                "[ 🦜 Natural Extended ] Characters:",
-                SillyTavern.getContext()
-                    .characters.length
+                "[ 🦜 Natural Extended ] Members:",
+                currentGroup?.members.length
             );
 
         }
