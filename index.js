@@ -12,7 +12,7 @@ jQuery(() => {
     // TEMP
     context.eventSource.on(
         context.eventTypes.GENERATION_ENDED,
-        () => {
+        async () => {
 
             console.log(
                 "[ 🦜 Natural Extended ] GENERATION_ENDED"
@@ -29,6 +29,21 @@ jQuery(() => {
                 "[ 🦜 Natural Extended ] Triggering from queue:",
                 nextCharacter
             );
+
+            const freshContext =
+                SillyTavern.getContext();
+
+            try {
+                await freshContext.executeSlashCommands(
+                    `/trigger "${nextCharacter}"`
+                );
+            }
+            catch (error) {
+                console.error(
+                    "[ 🦜 Natural Extended ] Queue trigger failed",
+                    error
+                );
+            }
 
         }
     );
