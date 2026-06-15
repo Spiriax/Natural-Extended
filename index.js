@@ -31,10 +31,21 @@ jQuery(() => {
                         String(freshContext.groupId)
                 );
 
-            console.log(
-                "[ 🦜 Natural Extended ] Members:",
-                currentGroup?.members.length
-            );
+            const extensionPanel =
+                document.getElementById(
+                    "natural-extended-panel"
+                );
+
+            if (extensionPanel) {
+
+                extensionPanel.style.display =
+                    "none";
+
+                console.log(
+                    "[ 🦜 Natural Extended ] Panel hidden"
+                );
+
+            }
 
         }
     );
