@@ -1,3 +1,11 @@
+import {
+    extension_settings
+} from '../../../extensions.js';
+
+console.log(
+    extension_settings
+);
+
 const naturalExtendedSettings = {};
 
 /*
