@@ -2,10 +2,26 @@ import {
     extension_settings
 } from '../../../extensions.js';
 
+import {
+    saveSettingsDebounced
+} from '../../../../script.js';
+
 console.log(
     "[ 🦜 Natural Extended ] extension_settings:",
     extension_settings
 );
+
+const MODULE =
+    "natural_extended";
+
+if (
+    !extension_settings[MODULE]
+) {
+    extension_settings[MODULE] = {};
+}
+
+const naturalExtendedSettings =
+    extension_settings[MODULE];
 
 const naturalExtendedSettings = {};
 
@@ -261,6 +277,8 @@ jQuery(() => {
                         : "none";
             }
 
+            saveSettingsDebounced();
+            
             updateSettingsVisibility();
             
             enableCheckbox.onchange = () => {
