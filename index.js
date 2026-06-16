@@ -81,16 +81,23 @@ jQuery(() => {
     );
 
     // TEMP
-    context.eventSource.on(
-        context.eventTypes.SETTINGS_UPDATED,
-        () => {
+    Object.values(
+        context.eventTypes
+    ).forEach(eventType => {
 
-            console.log(
-                "[ 🦜 Natural Extended ] SETTINGS_UPDATED"
-            );
+        context.eventSource.on(
+            eventType,
+            () => {
 
-        }
-    );
+                console.log(
+                    "[ 🦜 Natural Extended ] Event:",
+                    eventType
+                );
+
+            }
+        );
+
+    });
 
     context.eventSource.on(
         context.eventTypes.GENERATION_ENDED,
