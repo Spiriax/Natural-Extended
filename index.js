@@ -39,7 +39,6 @@ jQuery(() => {
     // (characters, chat ID, group ID, and so on...)
     const context = SillyTavern.getContext();
 
-    // TEMP
     context.eventSource.on(
         context.eventTypes.GROUP_UPDATED,
         () => {
@@ -78,6 +77,18 @@ jQuery(() => {
             console.log(
                 "[ 🦜 Natural Extended ] Character list refreshed"
             );
+        }
+    );
+
+    // TEMP
+    context.eventSource.on(
+        context.eventTypes.SETTINGS_UPDATED,
+        () => {
+
+            console.log(
+                "[ 🦜 Natural Extended ] SETTINGS_UPDATED"
+            );
+
         }
     );
 
@@ -801,11 +812,12 @@ jQuery(() => {
 * it only checks for new trigger within X words.
 * - Add some functionality to Talkativeness.
 * - Only show Natural Extended inside actual group chats.
-* - Update character list when adding characters.
 * - Add ways to randomize in which order characters respond.
 * - Making it so characters can respond to each other.
 * - Make it so switching away from Manual completely disables
 * Natural Order.
 * - Make each characters' icon appear next to their names.
-* - Make the information in the extension get saved for the user.
+* - Make each , create a little square around the word.
+* - Make the saved data update correctly when adding and removed characters.
+* - Make it so muting works.
 */
