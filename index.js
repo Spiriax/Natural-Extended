@@ -319,6 +319,10 @@ jQuery(() => {
                         // TEMP
                         if (strategySelect) {
 
+                            console.log(
+                                "[ 🦜 Natural Extended ] Strategy listener attached"
+                            );
+                            
                             strategySelect.addEventListener(
                                 "change",
                                 () => {
