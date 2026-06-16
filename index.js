@@ -316,6 +316,23 @@ jQuery(() => {
                             "rm_group_activation_strategy"
                         );
                 
+                        // TEMP
+                        if (strategySelect) {
+
+                            strategySelect.addEventListener(
+                                "change",
+                                () => {
+
+                                    console.log(
+                                        "[ 🦜 Natural Extended ] Reply strategy:",
+                                        strategySelect.value
+                                    );
+
+                                }
+                            );
+
+                        }
+
                     if (strategySelect) {
                 
                         // Group reply strategy 2 = Manual mode.
