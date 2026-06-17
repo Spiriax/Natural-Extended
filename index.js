@@ -203,6 +203,12 @@ jQuery(() => {
             // Load saved settings into the UI and connect input events.
             groupCharacters.forEach(character => {
 
+                // TEMP
+                console.log(
+                    "[ 🦜 Natural Extended ] Avatar:",
+                    character.avatar
+                );
+                
                 // Create default settings for new characters.
                 if (
                     !groupSettings.characters[
@@ -831,8 +837,6 @@ jQuery(() => {
 * - Only show Natural Extended inside actual group chats.
 * - Add ways to randomize in which order characters respond.
 * - Making it so characters can respond to each other.
-* - Make it so switching away from Manual completely disables
-* Natural Order.
 * - Make each characters' icon appear next to their names.
 * - Make each , create a little square around the word.
 * - Make the saved data update correctly when adding and removed characters.
