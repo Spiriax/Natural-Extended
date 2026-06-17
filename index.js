@@ -790,23 +790,38 @@ jQuery(() => {
                         "
                     >
 
-                        <div class="avatar">
-
-                            <img
-                                alt="Avatar"
-                                src="/thumbnail?type=avatar&file=${character.avatar}"
-                            >
-
-                        </div>
-
-                        <h4
+                        <div
                             style="
-                                color:#f0c040;
-                                margin:0;
+                                display:flex;
+                                align-items:center;
+                                gap:8px;
                             "
                         >
-                            ${character.name}
-                        </h4>
+
+                            <div
+                                class="avatar"
+                                style="
+                                    flex:none;
+                                "
+                            >
+
+                                <img
+                                    alt="Avatar"
+                                    src="/thumbnail?type=avatar&file=${character.avatar}"
+                                >
+
+                            </div>
+
+                            <span
+                                style="
+                                    color:#f0c040;
+                                    font-weight:bold;
+                                "
+                            >
+                                ${character.name}
+                            </span>
+
+                        </div>
 
                     </div>
     
