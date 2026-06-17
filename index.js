@@ -27,9 +27,11 @@ const naturalExtendedSettings =
  * SillyTavern's /trigger command cannot reliably trigger
  * multiple group members simultaneously.
  *
- * Natural Extended therefore uses a queue and waits for
- * GENERATION_ENDED before triggering the next character.
+ * Natural Extended therefore places triggered characters
+ * into a queue and waits for GENERATION_ENDED before
+ * triggering the next character.
  */
+
 let triggerQueue = [];
 
 jQuery(() => {
@@ -39,6 +41,7 @@ jQuery(() => {
     // (characters, chat ID, group ID, and so on...)
     const context = SillyTavern.getContext();
 
+    // Refresh character list when group membership changes.
     context.eventSource.on(
         context.eventTypes.GROUP_UPDATED,
         () => {
@@ -79,25 +82,6 @@ jQuery(() => {
             );
         }
     );
-
-    // TEMP
-    Object.values(
-        context.eventTypes
-    ).forEach(eventType => {
-
-        context.eventSource.on(
-            eventType,
-            () => {
-
-                console.log(
-                    "[ 🦜 Natural Extended ] Event:",
-                    eventType
-                );
-
-            }
-        );
-
-    });
 
     context.eventSource.on(
         context.eventTypes.GENERATION_ENDED,
@@ -205,6 +189,21 @@ jQuery(() => {
                 naturalExtendedSettings[
                     freshContext.groupId
                 ];
+
+            const strategySelect =
+                document.getElementById(
+                    "rm_group_activation_strategy"
+                );
+
+            if (strategySelect) {
+
+                strategySelect.onchange = () => {
+
+                    groupSettings.enabled = false;
+
+                    saveSettingsDebounced();
+                };
+            }
             
             // Keep character list sorted alphabetically.
             groupCharacters.sort(
@@ -295,8 +294,6 @@ jQuery(() => {
                         ? "block"
                         : "none";
             }
-
-            saveSettingsDebounced();
             
             updateSettingsVisibility();
             
@@ -315,27 +312,6 @@ jQuery(() => {
                         document.getElementById(
                             "rm_group_activation_strategy"
                         );
-                
-                        // TEMP
-                        if (strategySelect) {
-
-                            console.log(
-                                "[ 🦜 Natural Extended ] Strategy listener attached"
-                            );
-                            
-                            strategySelect.addEventListener(
-                                "change",
-                                () => {
-
-                                    console.log(
-                                        "[ 🦜 Natural Extended ] Reply strategy:",
-                                        strategySelect.value
-                                    );
-
-                                }
-                            );
-
-                        }
 
                     if (strategySelect) {
                 
@@ -383,11 +359,6 @@ jQuery(() => {
             
                 saveSettingsDebounced();
             };
-
-            console.log(
-                "[ 🦜 Natural Extended ] Settings:",
-                naturalExtendedSettings
-            );
         }
     );     
     
