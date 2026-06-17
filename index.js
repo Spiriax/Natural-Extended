@@ -126,7 +126,6 @@ jQuery(() => {
             const freshContext =
                 SillyTavern.getContext();
 
-                
             const extensionPanel =
                 document.getElementById(
                     "natural-extended-panel"
@@ -184,6 +183,11 @@ jQuery(() => {
                     characters: {}
                 };
             }
+
+            const groupSettings =
+                naturalExtendedSettings[
+                    freshContext.groupId
+                ];
             
             // Keep character list sorted alphabetically.
             groupCharacters.sort(
@@ -265,21 +269,29 @@ jQuery(() => {
 
             if (strategySelect) {
 
-                strategySelect.onchange = () => {
+                strategySelect.addEventListener(
+                    "change",
+                    () => {
 
-                    if (
-                        strategySelect.value !== "2"
-                    ) {
+                        console.log(
+                            "[ 🦜 Natural Extended ] Strategy changed:",
+                            strategySelect.value
+                        );
 
-                        groupSettings.enabled = false;
+                        if (
+                            strategySelect.value !== "2"
+                        ) {
 
-                        enableCheckbox.checked = false;
+                            groupSettings.enabled = false;
 
-                        updateSettingsVisibility();
+                            enableCheckbox.checked = false;
 
-                        saveSettingsDebounced();
+                            updateSettingsVisibility();
+
+                            saveSettingsDebounced();
+                        }
                     }
-                };
+                );
             }
             
             enableCheckbox.checked =
