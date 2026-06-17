@@ -184,26 +184,6 @@ jQuery(() => {
                     characters: {}
                 };
             }
-
-            const groupSettings =
-                naturalExtendedSettings[
-                    freshContext.groupId
-                ];
-
-            const strategySelect =
-                document.getElementById(
-                    "rm_group_activation_strategy"
-                );
-
-            if (strategySelect) {
-
-                strategySelect.onchange = () => {
-
-                    groupSettings.enabled = false;
-
-                    saveSettingsDebounced();
-                };
-            }
             
             // Keep character list sorted alphabetically.
             groupCharacters.sort(
@@ -277,6 +257,30 @@ jQuery(() => {
                 document.getElementById(
                     "ne-enabled"
                 );
+
+            const strategySelect =
+                document.getElementById(
+                    "rm_group_activation_strategy"
+                );
+
+            if (strategySelect) {
+
+                strategySelect.onchange = () => {
+
+                    if (
+                        strategySelect.value !== "2"
+                    ) {
+
+                        groupSettings.enabled = false;
+
+                        enableCheckbox.checked = false;
+
+                        updateSettingsVisibility();
+
+                        saveSettingsDebounced();
+                    }
+                };
+            }
             
             enableCheckbox.checked =
                 groupSettings.enabled;
@@ -303,6 +307,8 @@ jQuery(() => {
                     enableCheckbox.checked;
                 
                 updateSettingsVisibility();
+
+                saveSettingsDebounced();
                 
                 // Force SillyTavern into Manual mode.
                 // Natural Extended controls who gets triggered.
