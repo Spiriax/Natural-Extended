@@ -781,9 +781,34 @@ jQuery(() => {
                 <hr>
     
                 <div style="margin-top:10px;">
-                    <h4 style="color:#f0c040;">
-                        ${character.name}
-                    </h4>
+                    <div
+                        style="
+                            display:flex;
+                            align-items:center;
+                            gap:8px;
+                            margin-bottom:8px;
+                        "
+                    >
+
+                        <div class="avatar">
+
+                            <img
+                                alt="Avatar"
+                                src="/thumbnail?type=avatar&file=${character.avatar}"
+                            >
+
+                        </div>
+
+                        <h4
+                            style="
+                                color:#f0c040;
+                                margin:0;
+                            "
+                        >
+                            ${character.name}
+                        </h4>
+
+                    </div>
     
                     <div
                         style="
