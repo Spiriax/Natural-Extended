@@ -4,6 +4,6 @@ If you like to use group chats in SillyTavern, and you want better control of wh
 
 As you install this extension, you'll be met by an Enable checkbox inside of Group Controls:
 
-<img width="638" height="672" alt="image" src="https://github.com/user-attachments/assets/fc3b1db3-7a95-40c1-9cd9-84449c466dd2" />
+<img width="635" height="379" alt="image" src="https://github.com/user-attachments/assets/47c8b059-2853-4b71-a0bb-2407b477c67b" />
 
-HEJ
+Here are some examples how you can use Natural Extended.
