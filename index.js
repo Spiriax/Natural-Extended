@@ -829,9 +829,28 @@ jQuery(() => {
                                 "
                             >
 
-                                avatar...
+                                <div
+                                    class="avatar"
+                                    style="
+                                        flex:none;
+                                    "
+                                >
 
-                                namn...
+                                    <img
+                                        alt="Avatar"
+                                        src="/thumbnail?type=avatar&file=${character.avatar}"
+                                    >
+
+                                </div>
+
+                                <span
+                                    style="
+                                        color:#f0c040;
+                                        font-weight:bold;
+                                    "
+                                >
+                                    ${character.name}
+                                </span>
 
                             </div>
 
@@ -849,7 +868,7 @@ jQuery(() => {
                                     id="lock-${character.name}"
                                 >
 
-                                Lock
+                                Conversation Lock
 
                             </label>
 
