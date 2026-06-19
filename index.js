@@ -6,10 +6,7 @@ import {
     saveSettingsDebounced
 } from '../../../../script.js';
 
-console.log(
-    "[ 🦜 Natural Extended ] extension_settings:",
-    extension_settings
-);
+let activeConversationLock = [];
 
 const MODULE =
     "natural_extended";
@@ -219,7 +216,8 @@ jQuery(() => {
                         character.name
                     ] = {
                         respond: "",
-                        ignore: ""
+                        ignore: "",
+                        conversationalLock: false
                     };
                 }
 
@@ -227,6 +225,14 @@ jQuery(() => {
                     groupSettings.characters[
                         character.name
                     ];
+
+                if (
+                    characterSettings.conversationalLock
+                    === undefined
+                ) {
+                    characterSettings.conversationalLock =
+                        false;
+                }
             
                 const respondInput =
                     document.getElementById(
@@ -237,12 +243,20 @@ jQuery(() => {
                     document.getElementById(
                         `ignore-${character.name}`
                     );
+
+                const lockCheckbox =
+                    document.getElementById(
+                        `lock-${character.name}`
+                    );
             
                 respondInput.value =
                     characterSettings.respond;
 
                 ignoreInput.value =
                     characterSettings.ignore;
+
+                lockCheckbox.checked =
+                    characterSettings.conversationalLock;
             
                 // Save changes immediately when the user types.
                 respondInput.oninput = () => {
@@ -257,6 +271,14 @@ jQuery(() => {
 
                     characterSettings.ignore =
                         ignoreInput.value;
+
+                    saveSettingsDebounced();
+                };
+            
+                lockCheckbox.onchange = () => {
+
+                    characterSettings.conversationalLock =
+                        lockCheckbox.checked;
 
                     saveSettingsDebounced();
                 };
@@ -794,32 +816,42 @@ jQuery(() => {
                             style="
                                 display:flex;
                                 align-items:center;
-                                gap:8px;
+                                justify-content:space-between;
+                                width:100%;
                             "
                         >
 
                             <div
-                                class="avatar"
                                 style="
-                                    flex:none;
+                                    display:flex;
+                                    align-items:center;
+                                    gap:8px;
                                 "
                             >
 
-                                <img
-                                    alt="Avatar"
-                                    src="/thumbnail?type=avatar&file=${character.avatar}"
-                                >
+                                avatar...
+
+                                namn...
 
                             </div>
 
-                            <span
+                            <label
                                 style="
-                                    color:#f0c040;
-                                    font-weight:bold;
+                                    display:flex;
+                                    align-items:center;
+                                    gap:5px;
+                                    font-size:0.9em;
                                 "
                             >
-                                ${character.name}
-                            </span>
+
+                                <input
+                                    type="checkbox"
+                                    id="lock-${character.name}"
+                                >
+
+                                Lock
+
+                            </label>
 
                         </div>
 
