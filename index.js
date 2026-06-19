@@ -1,3 +1,6 @@
+// Natural Extended v0.9 - 
+// 20 June, 2026
+
 import {
     extension_settings
 } from '../../../extensions.js';
@@ -769,12 +772,21 @@ jQuery(() => {
             <hr>
             
             <div id="ne-character-container"></div>
+            
+            <p
+                style="
+                    opacity:0.7;
+                    margin-top:5px;
+                "
+            >
+                Separate words or phrases with commas.
+            </p>
                     
             <hr>
 
             <div style="margin-top:10px;">
                 <label>
-                    Words that make every character respond
+                    Words or phrases that make every character respond
                 </label>
                 <br>
                 <input
@@ -962,5 +974,6 @@ jQuery(() => {
 * - Make each , create a little square around the word.
 * - Make the saved data update correctly when adding and removed characters.
 * - Make it so muting works.
-* - Removing Conversation Lock actually terminates the current lock.
+* - Release Conversation Lock immediately when checkbox is disabled.
+* - Add a way to introduce delay during queues.
 */
