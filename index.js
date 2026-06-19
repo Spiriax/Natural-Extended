@@ -618,6 +618,25 @@ jQuery(() => {
                     match =>
                         match.characterName
                 );
+
+            const lockedCharacters =
+                triggeredCharacters.filter(
+                    characterName =>
+                        groupSettings.characters[
+                            characterName
+                        ]?.conversationalLock
+                );
+
+            if (lockedCharacters.length > 0) {
+
+                activeConversationLock =
+                    lockedCharacters;
+            }
+
+            console.log(
+                "[ 🦜 Natural Extended ] Conversation Lock:",
+                activeConversationLock
+            );
             
             if (
                 maxTriggered > 0
@@ -634,6 +653,17 @@ jQuery(() => {
                 "[ 🦜 Natural Extended ] Triggered:",
                 triggeredCharacters
             );
+            
+            if (
+                triggeredCharacters.length === 0 &&
+                activeConversationLock.length > 0
+            ) {
+
+                triggeredCharacters.push(
+                    ...activeConversationLock
+                );
+
+            }
             
             if (
                 !triggeredCharacters.length
@@ -932,4 +962,5 @@ jQuery(() => {
 * - Make each , create a little square around the word.
 * - Make the saved data update correctly when adding and removed characters.
 * - Make it so muting works.
+* - Removing Conversation Lock actually terminates the current lock.
 */
