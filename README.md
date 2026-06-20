@@ -1,5 +1,5 @@
-### Natural Extended
-# v0.9 - 20 June, 2026
+# Natural Extended
+## v0.9 - 20 June, 2026
 
 If you like to use group chats in SillyTavern, and you want better control of which character will answer during conversations? With this extension, you can specify a word or phrase that will make specific characters respond, as well as unique words or phrases that will force everybody to respond.
 
