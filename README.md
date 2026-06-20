@@ -1,13 +1,13 @@
 # Natural Extended
 ## v0.9 - 20 June, 2026
 
-If you like to use group chats in SillyTavern, and you want better control of which character will answer during conversations? With this extension, you can specify a word or phrase that will make specific characters respond, as well as unique words or phrases that will force everybody to respond.
+Natural Extended is designed for users who want more control over character responses in SillyTavern group chats. With this extension, you can specify a word or phrase that will make specific characters respond, as well as unique words or phrases that will force everybody to respond.
 
-As you install this extension, you'll be met by an Enable checkbox inside of Group Controls:
+Once installed, Natural Extended adds an Enable checkbox inside Group Controls:
 
 <img width="635" height="379" alt="image" src="https://github.com/user-attachments/assets/47c8b059-2853-4b71-a0bb-2407b477c67b" />
 
-As you enable Natural Extended, a row for each character with two fields will be created:
+When Natural Extended is enabled, a row for each character with two fields will be created:
 
 <img width="633" height="124" alt="image" src="https://github.com/user-attachments/assets/70339c37-c77e-465c-9a7b-e673f73af06e" />
 
@@ -16,7 +16,7 @@ Here is how a simple setup might look like. These characters will respond to any
 <img width="638" height="133" alt="image" src="https://github.com/user-attachments/assets/48d41598-b0d6-4019-8537-1926d8786d34" />
 <img width="635" height="116" alt="image" src="https://github.com/user-attachments/assets/202e3370-97de-4e22-99f9-c37a8ba5695f" />
 
-In my example, what if you want to talk to Cloud, but you want the topic to be about Tifa? This is where 'Maximum Triggered Characters' come in! This is a feature that can be found at the bottom of the extension field:
+In my example, what if you want to talk to Cloud, but you want the topic to be about Tifa? This is where 'Maximum Triggered Characters' comes in! This is a feature that can be found at the bottom of the extension field:
 
 <img width="634" height="68" alt="image" src="https://github.com/user-attachments/assets/270e960a-164b-4b05-8d4c-d15f3d72ce4d" />
 
@@ -33,17 +33,17 @@ For example, I can add the phrase, "listen up everyone":
 
 <img width="631" height="75" alt="image" src="https://github.com/user-attachments/assets/922dd58a-ff80-4896-be50-13cb3bf208a1" />
 
-Now, "listen up everyone" will make all characters respond, regardless of what Maximum Triggered Characters is set to, and it will also not take the Ignore fields into account. For example, saying "Listen up everyone! Let's look at clouds together!" will still make Cloud respond, together with Tifa. Also, when more than one character is responding a queue is created. Just like Natural Order (which is one of the Group reply strategies inside group chats in SillyTavern) once a message is finished generating the next message in queue is generated.
+Now, "listen up everyone" will make all characters respond, regardless of what Maximum Triggered Characters is set to, and it will also not take the Ignore fields into account. For example, saying "Listen up everyone! Let's look at clouds together!" will still make Cloud respond, together with Tifa. Also, when more than one character is triggered, a response queue is created. Just like Natural Order (which is one of the Group reply strategies inside group chats in SillyTavern) once a message is finished generating the next message in queue is generated.
 
 There is only one feature (so far) left to introduce. So what if you don't want to have to mention their names or anything in the Respond fields for every message? This is where 'Conversation Lock' comes in!
 
 <img width="1414" height="304" alt="image" src="https://github.com/user-attachments/assets/0aeb8bc0-e64f-4b57-bd46-74046f4193b4" />
 
-Conversation Lock is an individual checkbox for every character, and once it is active the character will continue to respond for every message if there are no other words or phrases from either 'Respond' or 'Words or phrases that make every character respond'.
+Conversation Lock is a per-character checkbox. When enabled, that character will continue responding to every message until another trigger word or phrase changes the active lock.
 
 <img width="635" height="264" alt="image" src="https://github.com/user-attachments/assets/7282e610-d932-40d9-a50e-31d0663063df" />
 
-So, if I say, "I'm talking to you now Cloud.", then Cloud will respond. Now we can talk about anything, and Cloud will continue to respond every message. If I want to talk to Tifa, I can say "I'm talking to you now Tifa" and this unlocks the 'Conversation Lock' on Cloud, and only Tifa will respond from then on. Conversation Lock also works with 'Words or phrases that make every character respond'. So if I say, "Listen up everyone!", now both of my character will respond every message, until another word or phrase is mentioned.
+So, if I say, "I'm talking to you now Cloud.", then Cloud will respond. Now we can talk about anything, and Cloud will continue to respond every message. If I want to talk to Tifa, I can say "I'm talking to you now Tifa" and this unlocks the 'Conversation Lock' on Cloud, and only Tifa will respond from then on. Conversation Lock also works with 'Words or phrases that make every character respond'. So if I say, "Listen up everyone!", now both of my characters will respond every message, until another word or phrase is mentioned.
 
 ### Feedback
 
