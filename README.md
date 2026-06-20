@@ -31,9 +31,9 @@ Above Maximum Triggered Characters you can also find the 'Words or phrases that 
 
 For example, I can add the phrase, "listen up everyone":
 
-<img width="633" height="76" alt="image" src="https://github.com/user-attachments/assets/5a758feb-281b-4685-99c0-3e8d81a607a5" />
+<img width="631" height="75" alt="image" src="https://github.com/user-attachments/assets/922dd58a-ff80-4896-be50-13cb3bf208a1" />
 
-Now, "listen up everyone" will make all characters respond, regardless of what Maximum Triggered Characters is set to, and it will also not take the Ignore fields into account. For example, saying "Listen up everyone! Let's look at clouds together!" will still make Cloud respond, together with Tifa.
+Now, "listen up everyone" will make all characters respond, regardless of what Maximum Triggered Characters is set to, and it will also not take the Ignore fields into account. For example, saying "Listen up everyone! Let's look at clouds together!" will still make Cloud respond, together with Tifa. Also, when more than one character is responding a queue is created. Just like Natural Order (which is one of the Group reply strategies inside group chats in SillyTavern) once a message is finished generating the next message in queue is generated.
 
 There is only one feature (so far) left to introduce. So what if you don't want to have to mention their names or anything in the Respond fields for every message? This is where 'Conversation Lock' comes in!
 
