@@ -784,27 +784,33 @@ jQuery(() => {
                     
             <hr>
 
-            <div style="margin-top:10px;">
+            <div
+                style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:5px;
+                "
+            >
                 <label>
                     All Respond
                 </label>
-                <br>
-                <input
-                    type="text"
-                    id="ne-everyone"
-                    class="text_pole flex1"
-                />
-                <p
+            
+                <span
                     style="
                         opacity:0.7;
-                        margin-top:5px;
-                        margin-bottom:0;
+                        font-size:0.9em;
                     "
                 >
                     Words or phrases that make every character respond.
-                </p>
+                </span>
             </div>
-
+            
+            <input
+                type="text"
+                id="ne-everyone"
+                class="text_pole flex1"
+            />
             <hr>
 
             <div style="margin-top:10px;">
