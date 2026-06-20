@@ -16,6 +16,7 @@ Here is how a simple setup might look like. These characters will respond to any
 <img width="638" height="133" alt="image" src="https://github.com/user-attachments/assets/48d41598-b0d6-4019-8537-1926d8786d34" />
 <img width="635" height="116" alt="image" src="https://github.com/user-attachments/assets/202e3370-97de-4e22-99f9-c37a8ba5695f" />
 
+(I added "chief" in Tifa's ignore field, because if you use speech-to-text "Tifa" could be misheard as "Chief" -- although this can also be fixed with Regex inside SillyTavern.)
 In my example, what if you want to talk to Cloud, but you want the topic to be about Tifa? This is where 'Maximum Triggered Characters' comes in! This is a feature that can be found at the bottom of the extension field:
 
 <img width="634" height="68" alt="image" src="https://github.com/user-attachments/assets/270e960a-164b-4b05-8d4c-d15f3d72ce4d" />
@@ -45,9 +46,10 @@ Conversation Lock is a per-character checkbox. When enabled, that character will
 
 So, if I say, "I'm talking to you now Cloud.", then Cloud will respond. Now we can talk about anything, and Cloud will continue to respond every message. If I want to talk to Tifa, I can say "I'm talking to you now Tifa" and this unlocks the 'Conversation Lock' on Cloud, and only Tifa will respond from then on. Conversation Lock also works with 'Words or phrases that make every character respond'. So if I say, "Listen up everyone!", now both of my characters will respond every message, until another word or phrase is mentioned.
 
-### Feedback
+### Feedback and Current Status
 
-Let me know if you have any feedback! Are there any features that you'd like to see? And please let me know if there are bugs. Currently, there are three bugs:
+Let me know if you have any feedback! Are there any features that you'd like to see? And please let me know if there are bugs. I started using this extension myself recently because it has the primary features I wanted, so I thought it was time for a release!
+Currently, there are three bugs:
 
 * When you add or remove characters while the extension has text inside the text fields, but I *believe* it's purely visual and will come back once you switch group to a different one, and come back.
 * When you create a new group the Natural Extended layout will be visible from the previous group you were in. If you hit F5 to refresh SillyTavern before making a new group it will not look as messy, for now.
@@ -56,9 +58,9 @@ Let me know if you have any feedback! Are there any features that you'd like to 
 Current TO-DO :
 
 * Being able to restrict each Respond word or phrase to trigger only within a certain number of words in a message. In case you want any Respond word to be ignored if you mention it later in the message.
-* Add some functionality to SillyTavern's internal feature, Talkativeness.
+* Add some functionality to SillyTavern's internal feature, 'Talkativeness'.
 * More Randomization. Right now each Respond word or phrase will trigger in the order inside the message. This will be able to be randomized, to make things less predictable. This will also add randomness to 'Words or phrases that make every character respond'.
 * Ways for characters to respond to each other.
-* Change the delimiter for splitting words or phrases. Did you notice at the tutorial that I wrote "I'm talking to you now Cloud", instead of "I'm talking to you now, Cloud" (with the comma)? This is because this will make it into two phrases, "I'm talking to you now", and "Cloud".
+* Replace the current comma-based delimiter with a more flexible system. Did you notice at the tutorial that I wrote "I'm talking to you now Cloud", instead of "I'm talking to you now, Cloud" (with the comma)? This is because this will make it into two phrases, "I'm talking to you now", and "Cloud".
 * Bake in Mute and manual Trigger in each character row. Just to make the Current Members section in group chats redundant when using Natural Extended.
 * Add a way to introduce delay during response queues.
