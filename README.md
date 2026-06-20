@@ -16,7 +16,7 @@ Here is how a simple setup might look like. These characters will respond to any
 <img width="638" height="133" alt="image" src="https://github.com/user-attachments/assets/48d41598-b0d6-4019-8537-1926d8786d34" />
 <img width="635" height="116" alt="image" src="https://github.com/user-attachments/assets/202e3370-97de-4e22-99f9-c37a8ba5695f" />
 
-(I added "chief" in Tifa's ignore field, because if you use speech-to-text then "Tifa" could be misheard as "Chief" -- although this can also be fixed with Regex inside SillyTavern.)
+((I added "chief" to Tifa's Ignore field because some speech-to-text systems may occasionally interpret "Tifa" as "chief", although this is also something that can be corrected with Regex inside SillyTavern.)
 In my example, what if you want to talk to Cloud, but you want the topic to be about Tifa? This is where 'Maximum Triggered Characters' comes in! This is a feature that can be found at the bottom of the extension field:
 
 <img width="634" height="68" alt="image" src="https://github.com/user-attachments/assets/270e960a-164b-4b05-8d4c-d15f3d72ce4d" />
