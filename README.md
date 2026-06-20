@@ -26,13 +26,13 @@ By default, this setting is set at 0. At 0, it does nothing. Once you set this v
 "Hey Cloud, don't you think Tifa is quite energetic today?" - Here, Cloud is mentioned first which means he will respond, but Tifa will not respond.
 "Tifa, come here! Let's play a little prank on Cloud!" - Here, Tifa is mentioned first which means she will respond, but Cloud will not respond.
 
-Above Maximum Triggered Characters you can also find the 'Words or phrases that will make every character respond':
+Above Maximum Triggered Characters you can also find the 'All Respond':
 
-<img width="633" height="76" alt="image" src="https://github.com/user-attachments/assets/fba7bd3b-d8d9-4c0b-bc1b-4f5d25afeec9" />
+<img width="633" height="78" alt="image" src="https://github.com/user-attachments/assets/3951cd38-e517-4c9b-9a91-8d5842ada5fe" />
 
 For example, I can add the phrase, "listen up everyone":
 
-<img width="631" height="75" alt="image" src="https://github.com/user-attachments/assets/922dd58a-ff80-4896-be50-13cb3bf208a1" />
+<img width="634" height="71" alt="image" src="https://github.com/user-attachments/assets/1ff2843c-7de7-44a8-b3c8-83078fcfb565" />
 
 Now, "listen up everyone" will make all characters respond, regardless of what Maximum Triggered Characters is set to, and it will also not take the Ignore fields into account. For example, saying "Listen up everyone! Let's look at clouds together!" will still make Cloud respond, together with Tifa. Also, when more than one character is triggered, a response queue is created. Just like Natural Order (which is one of the Group reply strategies inside group chats in SillyTavern) once a message is finished generating the next message in queue is generated.
 
@@ -44,7 +44,7 @@ Conversation Lock is a per-character checkbox. When enabled, that character will
 
 <img width="635" height="264" alt="image" src="https://github.com/user-attachments/assets/7282e610-d932-40d9-a50e-31d0663063df" />
 
-So, if I say, "I'm talking to you now Cloud.", then Cloud will respond. Now we can talk about anything, and Cloud will continue to respond every message. If I want to talk to Tifa, I can say "I'm talking to you now Tifa" and this unlocks the 'Conversation Lock' on Cloud, and only Tifa will respond from then on. Conversation Lock also works with 'Words or phrases that make every character respond'. So if I say, "Listen up everyone!", now both of my characters will respond every message, until another word or phrase is mentioned.
+So, if I say, "I'm talking to you now Cloud.", then Cloud will respond. Now we can talk about anything, and Cloud will continue to respond every message. If I want to talk to Tifa, I can say "I'm talking to you now Tifa" and this unlocks the 'Conversation Lock' on Cloud, and only Tifa will respond from then on. Conversation Lock also works with 'All Respond'. So if I say, "Listen up everyone!", now both of my characters will respond every message, until another word or phrase is mentioned.
 
 ### Feedback and Current Status
 
@@ -59,7 +59,7 @@ Current TO-DO :
 
 * Being able to restrict each Respond word or phrase to trigger only within a certain number of words in a message. In case you want any Respond word to be ignored if you mention it later in the message.
 * Add some functionality to SillyTavern's internal feature, 'Talkativeness'.
-* More Randomization. Right now each Respond word or phrase will trigger in the order inside the message. This will be able to be randomized, to make things less predictable. This will also add randomness to 'Words or phrases that make every character respond'.
+* More Randomization. Right now each Respond word or phrase will trigger in the order inside the message. This will be able to be randomized, to make things less predictable. This will also add randomness to 'All Respond'.
 * Ways for characters to respond to each other.
 * Replace the current comma-based delimiter with a more flexible system. Did you notice at the tutorial that I wrote "I'm talking to you now Cloud", instead of "I'm talking to you now, Cloud" (with the comma)? This is because this will make it into two phrases, "I'm talking to you now", and "Cloud".
 * Bake in Mute and manual Trigger in each character row. Just to make the Current Members section in group chats redundant when using Natural Extended.
