@@ -786,7 +786,7 @@ jQuery(() => {
 
             <div style="margin-top:10px;">
                 <label>
-                    Words or phrases that make every character respond
+                    All Respond
                 </label>
                 <br>
                 <input
@@ -794,6 +794,15 @@ jQuery(() => {
                     id="ne-everyone"
                     class="text_pole flex1"
                 />
+                <p
+                    style="
+                        opacity:0.7;
+                        margin-top:5px;
+                        margin-bottom:0;
+                    "
+                >
+                    Words or phrases that make every character respond.
+                </p>
             </div>
 
             <hr>
@@ -963,7 +972,6 @@ jQuery(() => {
 * If SillyTavern changes its UI this may break.
 *
 * TODO:
-* - Add Continue-toggle which makes conversational lock.
 * - Add Word Count-function to Continue function so
 * it only checks for new trigger within X words.
 * - Add some functionality to Talkativeness.
