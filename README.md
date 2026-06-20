@@ -11,7 +11,7 @@ As you enable Natural Extended, a row for each character with two fields will be
 
 <img width="633" height="124" alt="image" src="https://github.com/user-attachments/assets/70339c37-c77e-465c-9a7b-e673f73af06e" />
 
-Here is how a simple setup might look like. These character will respond to any of the words mentioned on the left, as long as the words or phrases to the right aren't mentioned:
+Here is how a simple setup might look like. These characters will respond to any of the words mentioned on the left, as long as the words or phrases to the right aren't mentioned:
 
 <img width="638" height="133" alt="image" src="https://github.com/user-attachments/assets/48d41598-b0d6-4019-8537-1926d8786d34" />
 <img width="635" height="116" alt="image" src="https://github.com/user-attachments/assets/202e3370-97de-4e22-99f9-c37a8ba5695f" />
